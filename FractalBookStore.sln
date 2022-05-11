@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32414.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalBookStore", "FractalBookStore\FractalBookStore.csproj", "{D6206FC6-E52D-4EB4-BB82-85687C24118D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_2_Domain", "_2_Domain", "{AE502A18-339F-4146-B723-C9B943E27F26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_3_Infrastructure", "_3_Infrastructure", "{84699D42-2FE2-4E45-8CCA-B4918E1796ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalBookStore.Memory", "FractalBookStore.Memory\FractalBookStore.Memory.csproj", "{B77AD800-BDA9-4FB7-B710-A03FD68DB155}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_0_Presentation", "_0_Presentation", "{740421FA-74D5-4530-9146-29404E74423F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalBookStore.Web", "FractalBookStore.Web\FractalBookStore.Web.csproj", "{98A9A2F7-A74D-4626-9059-218DB55DC2E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6206FC6-E52D-4EB4-BB82-85687C24118D} = {AE502A18-339F-4146-B723-C9B943E27F26}
+		{B77AD800-BDA9-4FB7-B710-A03FD68DB155} = {84699D42-2FE2-4E45-8CCA-B4918E1796ED}
+		{98A9A2F7-A74D-4626-9059-218DB55DC2E0} = {740421FA-74D5-4530-9146-29404E74423F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61B5704F-BAD2-4FBF-8EED-4152BF351096}
+	EndGlobalSection
+EndGlobal
