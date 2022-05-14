@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FractalBookStore.Domain.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FractalBookStore.Web.Controllers
 {
@@ -6,12 +7,12 @@ namespace FractalBookStore.Web.Controllers
     public class SearchController : Controller
     {
         // To get data repository for working on it.
-        private readonly IBookRepository _bookRepository;
+        private readonly BookService _bookService;
 
         // Injection via constructor.
-        public SearchController(IBookRepository bookRepository)
+        public SearchController(BookService bookService)
         {
-            _bookRepository = bookRepository;
+            _bookService = bookService;
         }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace FractalBookStore.Web.Controllers
         /// <returns> Model of data - Book[]</returns>
         public IActionResult Index(string query)
         {
-            var books = _bookRepository.GetAllByTitle(query);
+            var books = _bookService.GetAllByQuery(query);
 
             return View(books);
         }

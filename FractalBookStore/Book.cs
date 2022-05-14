@@ -11,5 +11,10 @@
             Id = id;
             Title = title;
         }
+
+        public static bool IsIsbn(string s)
+        {
+            return false;
+        }
     }
 }

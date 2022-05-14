@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace FractalBookStore.Memory
 {
@@ -10,6 +11,20 @@ namespace FractalBookStore.Memory
         // Array of test data.
         private readonly Book[] books;
         public Book[] GetAllByTitle(string titlePart)
+        {
+            return books.Where(book => book.Title.Contains(titlePart)).ToArray();
+        }
+
+        public Book[] GetAllByIsbn(string titlePart)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        ///  Get all books by title.
+        /// </summary>
+        /// <param name="titlePart"></param>
+        /// <returns>Array Book[]</returns>
+        public Book[] GetAllByTitleOrAuthor(string titlePart)
         {
             return books.Where(book => book.Title.Contains(titlePart)).ToArray();
         }
