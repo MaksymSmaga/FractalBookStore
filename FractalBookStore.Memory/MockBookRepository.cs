@@ -11,31 +11,33 @@ namespace FractalBookStore.Memory
         // Array of test data.
         private readonly Book[] books = new[]
         {
-            new Book(1, "Fractals: a very short introduction"),
-            new Book(2, "The Fractal Geometry Of Nature"),
-            new Book(3, "The Colors Of Infinity"),
-            new Book(4, "Fractal Nature Of Life"),
-            new Book(5, "Fractal And Multifractals"),
-            new Book(6, "Introduction To Fractal Theory"),
-            new Book(7, "Fractals In Geomechanics"),
-            new Book(8, "Fractals Phisics of Self-Similarity"),
-            new Book(9, "Beauty Of Fractals"),
-            new Book(10, "Basics Of Fractal Geometry"),
-            new Book(11, "Just A Fractal"),
-            new Book(12, "Fractal Between Myth And Craft"),
+            new Book(1, "ISBN 12345-12340", "Alex Jonson","Fractals: a very short introduction"),
+            new Book(2, "ISBN 12345-12341", "Max Steveson","The Fractal Geometry Of Nature"),
+            new Book(3, "ISBN 12345-12342", "William Richardson","The Colors Of Infinity"),
+            new Book(4, "ISBN 12345-12343", "John Holly","Fractal Nature Of Life"),
+            new Book(5, "ISBN 12345-12344", "Steve Rest","Fractal And Multifractals"),
+            new Book(6, "ISBN 12345-12345", "Jack Hardy","Introduction To Fractal Theory"),
+            new Book(7, "ISBN 12345-12346", "Mark Jackson","Fractals In Geomechanics"),
+            new Book(8, "ISBN 12345-12347", "Carl Lotty","Fractals Phisics of Self-Similarity"),
+            new Book(9, "ISBN 12345-12348", "Mark Departh","Beauty Of Fractals"),
+            new Book(10, "ISBN 12345-12349", "Tracy Horny","Basics Of Fractal Geometry"),
+            new Book(11, "ISBN 12345-12350", "Anton Galitch","Just A Fractal"),
+            new Book(12, "ISBN 12345-12351", "Peter Garryson","Fractal Between Myth And Craft"),
         };
-        public Book[] GetAllByIsbn(string titlePart)
+        public Book[] GetAllByIsbn(string isbn)
         {
-            throw new NotImplementedException();
+            return books.Where(book => book.Isbn == isbn).ToArray();
         }
         /// <summary>
         ///  Get all books by title.
         /// </summary>
         /// <param name="titlePart"></param>
         /// <returns>Array Book[]</returns>
-        public Book[] GetAllByTitleOrAuthor(string titlePart)
+        public Book[] GetAllByTitleOrAuthor(string query)
         { 
-            return books.Where(book => book.Title.Contains(titlePart)).ToArray();
+            return books.Where(book => book.Author.Contains(query)
+                                    || book.Author.Contains(query))
+                                    .ToArray();
         }
 
 

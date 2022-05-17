@@ -1,3 +1,4 @@
+using FractalBookStore.Domain.Services;
 using FractalBookStore.Memory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,7 @@ namespace FractalBookStore.Web
 
             // To declare Dependency injection.
             services.AddSingleton<IBookRepository,MockBookRepository>();
+            services.AddSingleton<BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
