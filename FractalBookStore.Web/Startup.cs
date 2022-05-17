@@ -24,6 +24,8 @@ namespace FractalBookStore.Web
 
             // To declare Dependency injection.
             services.AddSingleton<IBookRepository,MockBookRepository>();
+            
+            // To declare of BookService - search servise.
             services.AddSingleton<BookService>();
         }
 
