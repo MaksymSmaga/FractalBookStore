@@ -10,12 +10,12 @@ namespace FractalBookStore.Domain.Tests
         public Book[] ResultOfGetAllByTitleOrAuthor { get; set; }
         public Book[] GetAllByIsbn(string titlePart)
         {
-            throw new NotImplementedException();
+            return ResultOfGetAllByIsbn;
         }
 
         public Book[] GetAllByTitleOrAuthor(string titleOrAuthor)
         {
-            throw new NotImplementedException();
+            return ResultOfGetAllByTitleOrAuthor;
         }
     }
 }
