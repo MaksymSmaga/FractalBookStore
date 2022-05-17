@@ -10,12 +10,16 @@ namespace FractalBookStore
         public string Isbn { get; }
         public string Author { get; }
         public string Title { get; }
-        public Book(int id, string isbn, string title, string author)
+        public string Description { get; }
+        public decimal Price { get; }
+        public Book(int id, string isbn, string title, string author,string description, decimal price)
         {
             Id = id;
             Isbn = isbn;
             Title = title;
             Author = author;
+            Description = description;
+            Price = price;
         }
 
         public static bool IsIsbn(string s)

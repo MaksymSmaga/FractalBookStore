@@ -22,7 +22,7 @@ namespace FractalBookStore.Domain.Tests
         //    var validIsbn = "ISBN 12345-67890";
 
         //    var actual = bookService.GetAllByQuery(validIsbn);
-             
+
         //    Assert.Collection(actual, book => Assert.Equal(1, book.Id));
         //}
 
@@ -36,12 +36,12 @@ namespace FractalBookStore.Domain.Tests
 
             bookRepository.ResultOfGetAllByIsbn = new[]
             {
-                new Book(idOfIsbnSearch, "", "", ""),
+                new Book(idOfIsbnSearch, "", "", "" , "", 0.0m),
             };
 
             bookRepository.ResultOfGetAllByTitleOrAuthor = new[]
 {
-                new Book(idOfAuthorSearch, "", "", ""),
+                new Book(idOfAuthorSearch, "", "", "", "", 0.0m),
             };
 
             var bookService = new BookService(bookRepository);
@@ -61,12 +61,12 @@ namespace FractalBookStore.Domain.Tests
 
             bookRepository.ResultOfGetAllByIsbn = new[]
             {
-                new Book(idOfIsbnSearch, "", "", ""),
+                new Book(idOfIsbnSearch, "", "", "", "", 0.0m),
             };
 
             bookRepository.ResultOfGetAllByTitleOrAuthor = new[]
 {
-                new Book(idOfAuthorSearch, "", "", ""),
+                new Book(idOfAuthorSearch, "", "", "", "", 0.0m),
             };
 
             var bookService = new BookService(bookRepository);
