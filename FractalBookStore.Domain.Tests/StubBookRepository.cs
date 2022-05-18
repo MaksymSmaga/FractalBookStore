@@ -17,5 +17,10 @@ namespace FractalBookStore.Domain.Tests
         {
             return ResultOfGetAllByTitleOrAuthor;
         }
+
+        public Book GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

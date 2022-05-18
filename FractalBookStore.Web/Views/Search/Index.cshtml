@@ -1,5 +1,5 @@
-﻿@using FractalBookStore
-
+﻿@using FractalBookStore;
+ 
 @model  Book[]
 
 @{
@@ -18,7 +18,7 @@ else
    <ul>
        @foreach (var book in Model)
       {
-          <li><a href="@Url.Action("Index","Book, new{id=book.id}")">@book.Title</a></li>
+          <li><a href="@Url.Action("Index","Book", new{id=book.Id})">@book.Title</a></li>
       }
    </ul>
 }

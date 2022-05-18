@@ -27,6 +27,22 @@ namespace FractalBookStore.Web
             
             // To declare of BookService - search servise.
             services.AddSingleton<BookService>();
+
+            // Cart Data in cash
+            services.AddDistributedMemoryCache();
+
+            // To use Sessions.
+            services.AddSession(options =>
+            {
+                // Time term of the session.
+                options.IdleTimeout = System.TimeSpan.FromMinutes(13);
+                
+                // To get from server side.
+                options.Cookie.HttpOnly = true;
+
+                // Protect personal data.
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +62,9 @@ namespace FractalBookStore.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // To connect session.
+            app.UseSession();
 
             app.UseAuthorization();
 

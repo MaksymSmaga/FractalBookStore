@@ -1,0 +1,17 @@
+﻿@using FractalBookStore
+@model Book
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<p>@Model.Author</p>
+<p>@Model.Author</p>
+<p>@Model.Description</p>
+<p>Price: @Model.Price$</p>
+<form action="@Url.Action("Add","Cart")" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button class=" btn btn-outline-success" type="submit">Add into your Cart</button>
+</form>
