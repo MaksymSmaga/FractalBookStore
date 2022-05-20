@@ -8,7 +8,7 @@ namespace FractalBookStore
     {
         public int Id { get; set; }
 
-        private List<OrderItem> _items;
+        private readonly List<OrderItem> _items;
 
         public IReadOnlyCollection<OrderItem> Items
         {
@@ -33,6 +33,25 @@ namespace FractalBookStore
             Id = id;
 
             _items = new List<OrderItem>(items);
+        }
+
+        public void AddItem(Book book, int count)
+        {
+            if (book == null)
+                throw new ArgumentNullException(nameof(book));
+
+            var item = _items.SingleOrDefault(x => x.BookId == book.Id);
+
+            if (item == null)
+            {
+                _items.Add(new OrderItem(book.Id,count, book.Price));
+            }
+            else
+            {
+                _items.Remove(item);
+                _items.Add(new OrderItem(book.Id, _items.Count + count, book.Price));
+
+            }
         }
     }
 }

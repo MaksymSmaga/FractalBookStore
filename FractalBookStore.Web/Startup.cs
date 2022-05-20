@@ -31,11 +31,14 @@ namespace FractalBookStore.Web
             // Cart Data in cash
             services.AddDistributedMemoryCache();
 
+
+            services.AddSingleton<IOrderRepository, OrderRepository>();  
+
             // To use Sessions.
             services.AddSession(options =>
             {
                 // Time term of the session.
-                options.IdleTimeout = System.TimeSpan.FromMinutes(13);
+                options.IdleTimeout = System.TimeSpan.FromMinutes(60);
                 
                 // To get from server side.
                 options.Cookie.HttpOnly = true;
