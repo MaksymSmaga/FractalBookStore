@@ -36,14 +36,19 @@ namespace FractalBookStore.Web
                 using (var reader = new BinaryReader(stream, encoding: System.Text.Encoding.UTF8, true))
                 {
                     value = new Cart();
+
                     var length = reader.ReadInt32();
+
                     for (int i = 0; i < length; i++)
                     {
                         var bookId = reader.ReadInt32();
                         var count = reader.ReadInt32();
+
                         value.Items.Add(bookId, count);
                     }
+
                     value.Amount = reader.ReadDecimal();
+
                     return true;
                 }
             }
