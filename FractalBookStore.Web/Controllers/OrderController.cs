@@ -51,9 +51,7 @@ namespace FractalBookStore.Web.Controllers
             };
 
         }
-
-
-
+ 
         public IActionResult AddItem(int id)
         {
 
@@ -82,5 +80,6 @@ namespace FractalBookStore.Web.Controllers
             HttpContext.Session.Set(cart);
             return RedirectToAction("Index", "Book", new { id });
         }
+
     }
 }
