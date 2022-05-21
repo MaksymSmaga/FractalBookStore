@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FractalBookStore.Memory
@@ -41,12 +42,20 @@ namespace FractalBookStore.Memory
         public Book[] GetAllByTitleOrAuthor(string query)
         {
             return books.Where(book => book.Author.Contains(query)
-                                    || book.Author.Contains(query))
+                                    || book.Title.Contains(query)
+                                    || book.Description.Contains(query))
                                     .ToArray();
         }
         public Book GetById(int id)
         {
             return books.Single(book => book.Id == id);
+        }
+        public Book[] GetAllByIds(IEnumerable<int> bookIds)
+        {
+            var foundBooks = from book in books
+                             join bookId in bookIds on book.Id equals bookId
+                             select book;
+            return foundBooks.ToArray();
         }
     }
 }

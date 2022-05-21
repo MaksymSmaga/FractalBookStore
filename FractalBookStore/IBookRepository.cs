@@ -1,4 +1,6 @@
-﻿namespace FractalBookStore
+﻿using System.Collections.Generic;
+
+namespace FractalBookStore
 {
     // To describe the contract functional
     // of inheritanced and implemented BookRepositories.
@@ -9,5 +11,6 @@
         Book[] GetAllByTitleOrAuthor(string titleOrAuthor);
 
         Book GetById(int id);
+        Book[] GetAllByIds(IEnumerable<int> bookIds);
     }
 }
