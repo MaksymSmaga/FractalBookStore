@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace FractalBookStore
-{
+{   // MementoPattern.
+    // To hide Class Object,
+    // but to know all properities save it into DB.
+ 
+    // DTOPattern - Data Transfer Object.
+    // - simple model of Class Object.
     public class Order
     {
         public int Id { get; set; }

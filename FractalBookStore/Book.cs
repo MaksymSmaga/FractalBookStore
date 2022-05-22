@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using FractalBookStore.DataTransferObjects;
+using System;
+using System.Text.RegularExpressions;
 
 namespace FractalBookStore
 {
@@ -6,32 +8,68 @@ namespace FractalBookStore
     // with help class Book.
     public class Book
     {
-        public int Id { get; }
-        public string Isbn { get; }
-        public string Author { get; }
-        public string Title { get; }
-        public string Description { get; }
-        public decimal Price { get; }
-        public Book(int id, string isbn, string title, string author,string description, decimal price)
+        private readonly BookDto _dto;
+        public int Id => _dto.Id;
+        public string Isbn
         {
-            Id = id;
-            Isbn = isbn;
-            Title = title;
-            Author = author;
-            Description = description;
-            Price = price;
+            get => _dto.Isbn;
+            set => _dto.Isbn = value;
+        }
+        public string Author
+        {
+            get => _dto.Author;
+            set => _dto.Author = value?.Trim();
+        }
+        public string Title
+        {
+            get => _dto.Title;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException(nameof(value));
+
+                _dto.Title = value.Trim();
+            }
+
+        }
+        public string Description
+        {
+            get => _dto.Description;
+            set => _dto.Description = value;
+        }
+        public decimal Price
+        {
+            get => _dto.Price;
+            set => _dto.Price = value;
         }
 
-        public static bool IsIsbn(string s)
+        internal Book(BookDto dto)
         {
-            if (s == null)
+            _dto = dto;
+        }
+        public static bool TryFormatIsIsbn(string isbn, out string formatedIsbn)
+        {
+            if (isbn == null)
+            {
+                formatedIsbn = null;
                 return false;
+            }
 
-            s = s.Replace("-", "")
-                 .Replace(" ", "")
-                 .ToUpper();
+            formatedIsbn = isbn.Replace("-", "")
+                               .Replace(" ", "")
+                               .ToUpper();
 
-            return Regex.IsMatch(s, @"^ISBN\d{10}(\d{3})?$");
+            return Regex.IsMatch(formatedIsbn, @"^ISBN\d{10}(\d{3})?$");
+        }
+
+
+        public static bool IsIsbn(string isbn) => TryFormatIsIsbn(isbn, out _);
+
+        public  static class BookMapper
+        {
+            public static Book Map(BookDto dto) => new Book(dto);
+            public static BookDto Map(Book domain) => domain._dto;
+
         }
     }
 }
