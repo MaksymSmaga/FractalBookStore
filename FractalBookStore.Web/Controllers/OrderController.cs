@@ -70,7 +70,7 @@ namespace FractalBookStore.Web.Controllers
             }
 
             var book = _bookRepository.GetById(id);
-            order.AddItem(book, 1);
+            order.AddOrUpdateItem(book, 1);
 
             _orderRepository.Update(order);
 
@@ -98,7 +98,7 @@ namespace FractalBookStore.Web.Controllers
             }
 
             var book = _bookRepository.GetById(id);
-            order.AddItem(book, 1);
+            order.AddOrUpdateItem(book, 1);
 
             _orderRepository.Update(order);
 
@@ -127,7 +127,7 @@ namespace FractalBookStore.Web.Controllers
             }
 
             var book = _bookRepository.GetById(id);
-            order.AddItem(book, 1);
+            order.AddOrUpdateItem(book, 1);
 
             _orderRepository.Update(order);
 
@@ -155,7 +155,7 @@ namespace FractalBookStore.Web.Controllers
             }
 
             var book = _bookRepository.GetById(id);
-            order.AddItem(book, 1);
+            order.AddOrUpdateItem(book, 1);
 
             _orderRepository.Update(order);
 
