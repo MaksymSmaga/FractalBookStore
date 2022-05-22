@@ -51,119 +51,66 @@ namespace FractalBookStore.Web.Controllers
             };
 
         }
+         
  
-        public IActionResult AddItem(int id)
+        public IActionResult AddItem(int bookId, int count)
         {
+            (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            Order order;
-            Cart cart;
+            var book = _bookRepository.GetById(bookId);
 
-            if (HttpContext.Session.TryGetCart(out cart))
-            {
-                order = _orderRepository.GetById(cart.OrderId);
-            }
+            order.AddOrUpdateItem(book, count);
 
-            else
-            {
-                order = _orderRepository.Create();
-                cart = new Cart(order.Id);
-            }
+            SaveOrderToAction(order, cart);
 
-            var book = _bookRepository.GetById(id);
-            order.AddOrUpdateItem(book, 1);
+            return RedirectToAction("Index", "Book", new { bookId });
 
-            _orderRepository.Update(order);
-
-            cart.TotalCount = order.TotalCount;
-            cart.TotalPrice = order.TotalPrice;
-
-            HttpContext.Session.Set(cart);
-            return RedirectToAction("Index", "Book", new { id });
         }
         public IActionResult RemoveItem(int id)
         {
+            (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            Order order;
-            Cart cart;
+            order.RemoveItem(id);
 
-            if (HttpContext.Session.TryGetCart(out cart))
-            {
-                order = _orderRepository.GetById(cart.OrderId);
-            }
+            SaveOrderToAction(order, cart);
 
-            else
-            {
-                order = _orderRepository.Create();
-                cart = new Cart(order.Id);
-            }
-
-            var book = _bookRepository.GetById(id);
-            order.AddOrUpdateItem(book, 1);
-
-            _orderRepository.Update(order);
-
-            cart.TotalCount = order.TotalCount;
-            cart.TotalPrice = order.TotalPrice;
-
-            HttpContext.Session.Set(cart);
             return RedirectToAction("Index", "Book", new { id });
         }
 
-        public IActionResult AddBook(int id)
+        [HttpPost]
+        public IActionResult UpdateItem(int bookId, int count)
         {
+            (Order order, Cart cart) = GetOrCreateOrderAndCart();
+            
+            order.GetItem(bookId).Count = count;
 
-            Order order;
-            Cart cart;
+            SaveOrderToAction(order, cart);
 
-            if (HttpContext.Session.TryGetCart(out cart))
-            {
-                order = _orderRepository.GetById(cart.OrderId);
-            }
-
-            else
-            {
-                order = _orderRepository.Create();
-                cart = new Cart(order.Id);
-            }
-
-            var book = _bookRepository.GetById(id);
-            order.AddOrUpdateItem(book, 1);
-
-            _orderRepository.Update(order);
-
-            cart.TotalCount = order.TotalCount;
-            cart.TotalPrice = order.TotalPrice;
-
-            HttpContext.Session.Set(cart);
-            return RedirectToAction("Index", "Book", new { id });
+            return RedirectToAction("Index", "Book", new { bookId });
         }
-        public IActionResult RemoveBook(int id)
+         
+        private (Order order, Cart cart) GetOrCreateOrderAndCart()
         {
-
             Order order;
-            Cart cart;
-
-            if (HttpContext.Session.TryGetCart(out cart))
+            if (HttpContext.Session.TryGetCart(out Cart cart))
             {
                 order = _orderRepository.GetById(cart.OrderId);
             }
-
             else
             {
                 order = _orderRepository.Create();
                 cart = new Cart(order.Id);
             }
-
-            var book = _bookRepository.GetById(id);
-            order.AddOrUpdateItem(book, 1);
-
+            return (order, cart);
+        }
+        private void SaveOrderToAction(Order order, Cart cart)
+        {
             _orderRepository.Update(order);
 
             cart.TotalCount = order.TotalCount;
             cart.TotalPrice = order.TotalPrice;
 
             HttpContext.Session.Set(cart);
-            return RedirectToAction("Index", "Book", new { id });
         }
     }
 }

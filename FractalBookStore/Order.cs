@@ -29,11 +29,11 @@ namespace FractalBookStore
             _items = new List<OrderItem>(items);
         }
 
-        public OrderItem Get(int bookId)
+        public OrderItem GetItem(int bookId)
         {
             int index = _items.FindIndex(item => item.BookId == bookId);
             if (index == -1)
-                throw new InvalidOperationException("Book is not found.");
+                ThrowBookException("Book is not found.",bookId);
             return _items[index];
         }
         public void AddOrUpdateItem(Book book, int count)
@@ -49,26 +49,24 @@ namespace FractalBookStore
                 _items[index].Count += count;
         }
 
-        public void RemoveItem(Book book)
+        public void RemoveItem(int bookId)
         {
-            if (book == null)
-                throw new ArgumentNullException(nameof(book));
-
-            int index = _items.FindIndex(item => item.BookId == book.Id);
+            int index = _items.FindIndex(item => item.BookId == bookId);
 
             if (index == -1)
-                ThrowBookException("Order doesn`t have a spec book.", book);
+                ThrowBookException("Order doesn`t have a spec book.", bookId);
 
             _items.RemoveAt(index);
         }
 
-        private void ThrowBookException(string message, Book book)
+        private void ThrowBookException(string message, int bookId)
         {
             var exception = new InvalidOperationException(message);
-            exception.Data[nameof(book.Id)] = book.Id;
-            exception.Data[nameof(book.Title)] = book.Title;
-            exception.Data[nameof(book.Author)] = book.Author;
+            exception.Data["bookId"] = bookId;
+
             throw exception;
         }
+
+        
     }
 }

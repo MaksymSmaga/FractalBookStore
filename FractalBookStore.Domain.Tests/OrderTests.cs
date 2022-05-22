@@ -40,7 +40,7 @@ namespace FractalBookStore.Domain.Tests
 
 
         [Fact]
-        public void Get_WithExistingItem_ReturnItem()
+        public void GetItem_WithExistingItem_ReturnItem()
         {
             var order = new Order(1, new[]
             {
@@ -48,12 +48,12 @@ namespace FractalBookStore.Domain.Tests
                 new OrderItem (2,5,100m),
             });
 
-            var orderItem = order.Get(1);
+            var orderItem = order.GetItem(1);
 
             Assert.Equal(3, orderItem.Count);
         }
         [Fact]
-        public void Get_WithExistingItem_ThrowsInvalidOperationException()
+        public void GetItem_WithExistingItem_ThrowsInvalidOperationException()
         {
             var order = new Order(1, new[]
             {
@@ -63,7 +63,7 @@ namespace FractalBookStore.Domain.Tests
 
             Assert.Throws<InvalidOperationException>(() =>
             {
-                order.Get(100);
+                order.GetItem(100);
             });
         }
     }
