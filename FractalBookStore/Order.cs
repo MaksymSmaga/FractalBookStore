@@ -62,7 +62,7 @@ namespace FractalBookStore
         private void ThrowBookException(string message, int bookId)
         {
             var exception = new InvalidOperationException(message);
-            exception.Data["bookId"] = bookId;
+            exception.Data["BookId"] = bookId;
 
             throw exception;
         }

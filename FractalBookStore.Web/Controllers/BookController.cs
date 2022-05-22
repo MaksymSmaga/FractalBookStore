@@ -13,6 +13,7 @@ namespace FractalBookStore.Web.Controllers
         public IActionResult Index(int id)
         {
             Book book = _bookRepository.GetById(id);
+
             return View(book);
         }
     }

@@ -53,7 +53,7 @@ namespace FractalBookStore.Web.Controllers
         }
          
  
-        public IActionResult AddItem(int bookId, int count)
+        public IActionResult AddItem(int bookId, int count = 1 )
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
@@ -63,18 +63,18 @@ namespace FractalBookStore.Web.Controllers
 
             SaveOrderToAction(order, cart);
 
-            return RedirectToAction("Index", "Book", new { bookId });
+            return RedirectToAction("Index", "Book", new { id = bookId });
 
         }
-        public IActionResult RemoveItem(int id)
+        public IActionResult RemoveItem(int bookId)
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            order.RemoveItem(id);
+            order.RemoveItem(bookId);
 
             SaveOrderToAction(order, cart);
 
-            return RedirectToAction("Index", "Book", new { id });
+            return RedirectToAction("Index", "Order");
         }
 
         [HttpPost]
@@ -86,7 +86,7 @@ namespace FractalBookStore.Web.Controllers
 
             SaveOrderToAction(order, cart);
 
-            return RedirectToAction("Index", "Book", new { bookId });
+            return RedirectToAction("Index", "Order" );
         }
          
         private (Order order, Cart cart) GetOrCreateOrderAndCart()
