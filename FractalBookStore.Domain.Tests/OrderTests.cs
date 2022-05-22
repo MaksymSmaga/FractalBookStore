@@ -66,35 +66,35 @@ namespace FractalBookStore.Domain.Tests
                 order.GetItem(100);
             });
         }
-        [Fact]
-        public void AddOrUpdateItem_WithExistingItem_UpdatesCount()
-        {
-            var order = new Order(1, new[]
-            {
-                new OrderItem (1,3,10m),
-                new OrderItem (2,5,100m),
-            });
-            var book = new Book(1, null, null, null, null, 0m);
+        //[Fact]
+        //public void AddOrUpdateItem_WithExistingItem_UpdatesCount()
+        //{
+        //    var order = new Order(1, new[]
+        //    {
+        //        new OrderItem (1,3,10m),
+        //        new OrderItem (2,5,100m),
+        //    });
+        //    var book = new Book(1, null, null, null, null, 0m);
             
-            order.AddOrUpdateItem(book, 10);
+        //    order.AddOrUpdateItem(book, 10);
 
-            Assert.Equal(13, order.GetItem(1).Count);
-        }
+        //    Assert.Equal(13, order.GetItem(1).Count);
+        //}
 
-        [Fact]
-        public void AddOrUpdateItem_WithNonExistingItem_AddsCount()
-        {
-            var order = new Order(1, new[]
-            {
-                new OrderItem (1,3,10m),
-                new OrderItem (2,5,100m),
-            });
-            var book = new Book(4, null, null, null, null, 0m);
+        //[Fact]
+        //public void AddOrUpdateItem_WithNonExistingItem_AddsCount()
+        //{
+        //    var order = new Order(1, new[]
+        //    {
+        //        new OrderItem (1,3,10m),
+        //        new OrderItem (2,5,100m),
+        //    });
+        //    var book = new Book(4, null, null, null, null, 0m);
 
-            order.AddOrUpdateItem(book, 10);
+        //    order.AddOrUpdateItem(book, 10);
  
-            Assert.Equal(10, order.GetItem(4).Count);
-        }
+        //    Assert.Equal(10, order.GetItem(4).Count);
+        //}
 
         [Fact]
         public void RemoveItem_WithExistingItem_RemovesCount()
