@@ -29,7 +29,7 @@ namespace FractalBookStore
             _items = new List<OrderItem>(items);
         }
 
-        private OrderItem Get(int bookId)
+        public OrderItem Get(int bookId)
         {
             int index = _items.FindIndex(item => item.BookId == bookId);
             if (index == -1)
