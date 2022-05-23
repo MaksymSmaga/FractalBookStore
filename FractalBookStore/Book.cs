@@ -52,11 +52,10 @@ namespace FractalBookStore
             _dto = dto;
         }
 
-        public static class BookMapper
+        public static class Mapper
         {
             public static Book Map(BookDTO dto) => new Book(dto);
             public static BookDTO Map(Book domain) => domain._dto;
-
         }
         public static class DTOFactory
         {

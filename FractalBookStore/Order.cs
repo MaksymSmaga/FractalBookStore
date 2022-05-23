@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FractalBookStore.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,14 +7,15 @@ namespace FractalBookStore
 {   // MementoPattern.
     // To hide Class Object,
     // but to know all properities save it into DB.
- 
+
     // DTOPattern - Data Transfer Object.
     // - simple model of Class Object.
     public class Order
     {
-        public int Id { get; set; }
+        private readonly OrderDTO _dto;
 
         private readonly List<OrderItem> _items;
+        public int Id => _dto.Id;
 
         public IReadOnlyCollection<OrderItem> Items
         {
@@ -24,21 +26,16 @@ namespace FractalBookStore
 
         public decimal TotalPrice => _items.Sum(item => item.Price * item.Count);
 
-        public Order(int id, IEnumerable<OrderItem> items)
+        public Order(OrderDTO dto)
         {
-            if (items == null)
-                throw new ArgumentNullException(nameof(items));
-
-            Id = id;
-
-            _items = new List<OrderItem>(items);
+            _dto = dto;
         }
 
         public OrderItem GetItem(int bookId)
         {
             int index = _items.FindIndex(item => item.BookId == bookId);
             if (index == -1)
-                ThrowBookException("Book is not found.",bookId);
+                ThrowBookException("Book is not found.", bookId);
             return _items[index];
         }
         public void AddOrUpdateItem(Book book, int count)
@@ -49,7 +46,7 @@ namespace FractalBookStore
             int index = _items.FindIndex(x => x.BookId == book.Id);
 
             if (index == -1)
-                _items.Add(new OrderItem(book.Id, count, book.Price));
+                _items.Add(new OrderItem(new OrderItemDTO()));
             else
                 _items[index].Count += count;
         }
@@ -72,6 +69,15 @@ namespace FractalBookStore
             throw exception;
         }
 
-        
+
+        public static class DTOFactory
+        {
+            public static OrderDTO Create() => new OrderDTO();
+        }
+        public static class Mapper
+        {
+            public static Order Map(OrderDTO dto) => new Order(dto);
+            public static OrderDTO Map(Order domain) => domain._dto;
+        }
     }
 }
