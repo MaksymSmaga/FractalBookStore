@@ -9,17 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_2_Domain", "_2_Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_3_Infrastructure", "_3_Infrastructure", "{84699D42-2FE2-4E45-8CCA-B4918E1796ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Memory", "FractalBookStore.Memory\FractalBookStore.Memory.csproj", "{B77AD800-BDA9-4FB7-B710-A03FD68DB155}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_0_Presentation", "_0_Presentation", "{740421FA-74D5-4530-9146-29404E74423F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Web", "FractalBookStore.Web\FractalBookStore.Web.csproj", "{98A9A2F7-A74D-4626-9059-218DB55DC2E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_1_Services", "_1_Services", "{6C965E4F-1C86-47F3-AEF6-080096CE38F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalBookStore.Domain.Services", "FractalBookStore.Domain.Services\FractalBookStore.Domain.Services.csproj", "{C550681C-6D4E-47DF-8C72-B2D95333CD28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Domain.Services", "FractalBookStore.Domain.Services\FractalBookStore.Domain.Services.csproj", "{C550681C-6D4E-47DF-8C72-B2D95333CD28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalBookStore.Domain.Tests", "FractalBookStore.Domain.Tests\FractalBookStore.Domain.Tests.csproj", "{DF5DA06D-1413-4B46-9F56-64ABC0E4CA54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Domain.Tests", "FractalBookStore.Domain.Tests\FractalBookStore.Domain.Tests.csproj", "{DF5DA06D-1413-4B46-9F56-64ABC0E4CA54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6206FC6-E52D-4EB4-BB82-85687C24118D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B77AD800-BDA9-4FB7-B710-A03FD68DB155}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98A9A2F7-A74D-4626-9059-218DB55DC2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,7 +47,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D6206FC6-E52D-4EB4-BB82-85687C24118D} = {AE502A18-339F-4146-B723-C9B943E27F26}
-		{B77AD800-BDA9-4FB7-B710-A03FD68DB155} = {84699D42-2FE2-4E45-8CCA-B4918E1796ED}
 		{98A9A2F7-A74D-4626-9059-218DB55DC2E0} = {740421FA-74D5-4530-9146-29404E74423F}
 		{C550681C-6D4E-47DF-8C72-B2D95333CD28} = {6C965E4F-1C86-47F3-AEF6-080096CE38F2}
 		{DF5DA06D-1413-4B46-9F56-64ABC0E4CA54} = {AE502A18-339F-4146-B723-C9B943E27F26}
