@@ -1,6 +1,6 @@
 ﻿namespace FractalBookStore.DataTransferObjects
 {
-    public class BookDto
+    public class BookDTO
     {
         public int Id { get; set; }
         public string Isbn { get; set; }

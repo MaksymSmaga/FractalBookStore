@@ -1,14 +1,11 @@
 ﻿using FractalBookStore.DataTransferObjects;
 using System;
 using System.Text.RegularExpressions;
-
 namespace FractalBookStore
 {
-    // To realize an entity of Business Logic
-    // with help class Book.
     public class Book
     {
-        private readonly BookDto _dto;
+        private readonly BookDTO _dto;
 
         public int Id => _dto.Id;
         public string Isbn
@@ -50,20 +47,20 @@ namespace FractalBookStore
             set => _dto.Price = value;
         }
 
-        internal Book(BookDto dto)
+        internal Book(BookDTO dto)
         {
             _dto = dto;
         }
+
         public static class BookMapper
         {
-            public static Book Map(BookDto dto) => new Book(dto);
-            public static BookDto Map(Book domain) => domain._dto;
+            public static Book Map(BookDTO dto) => new Book(dto);
+            public static BookDTO Map(Book domain) => domain._dto;
 
         }
-
-        public static class DtoFactory
+        public static class DTOFactory
         {
-            public static BookDto Create(string isbn,
+            public static BookDTO Create(string isbn,
                                           string author,
                                           string title,
                                           string description,
@@ -76,7 +73,7 @@ namespace FractalBookStore
 
                 if (string.IsNullOrWhiteSpace(title))
                     throw new ArgumentException(nameof(title));
-                return new BookDto
+                return new BookDTO
                 {
                     Isbn = isbn,
                     Author = author?.Trim(),
@@ -88,6 +85,7 @@ namespace FractalBookStore
             }
            
         }
+
         public static bool TryFormatedIsbn(string isbn, out string formatedIsbn)
         {
             if (isbn == null)
@@ -102,7 +100,6 @@ namespace FractalBookStore
 
             return Regex.IsMatch(formatedIsbn, @"^ISBN\d{10}(\d{3})?$");
         }
-
         public static bool IsIsbn(string isbn) => TryFormatedIsbn(isbn, out _);   
     }
 }
