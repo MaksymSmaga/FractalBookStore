@@ -11,9 +11,17 @@ namespace FractalBookStore.DTO
 
 
         public IList<OrderItemDTO> Items { get; set; } = new List<OrderItemDTO>();
-        public int TotalCount => _items.Sum(item => item.Count);
+        public int TotalCount
+        {
+            get { return _items.Sum(item => item.Count); }
+            set { }
+        }
 
-        public decimal TotalPrice => _items.Sum(item => item.Price * item.Count);
+        public decimal TotalPrice
+        {
+            get { return _items.Sum(item => item.Price * item.Count); }
+            set { }
+        }
 
     }
 }
