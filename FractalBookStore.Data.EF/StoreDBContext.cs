@@ -1,6 +1,7 @@
 ﻿using FractalBookStore.DataTransferObjects;
 using FractalBookStore.DTO;
 using Microsoft.EntityFrameworkCore;
+using FractalBookStore.Web;
 using System;
 
 namespace FractalBookStore.Data.EF
