@@ -41,28 +41,36 @@ namespace FractalBookStore.Data.EF
                     new BookDTO
                     {
                         Id = 1,
-                        Isbn = "ISBN0201038013",
-                        Author = "D. Knuth",
-                        Title = "Art Of Programming, Vol. 1",
-                        Description = "This volume begins with basic programming concepts and techniques, then focuses more particularly on information structures-the representation of information inside a computer, the structural relationships between data elements and how to deal with them efficiently.",
-                        Price = 7.19m,
+                        Isbn = "ISBN1211031013",
+                        Author = "Kenneth Falconer",
+                        Title = "Fractals: a very short introduction",
+                        Description = "To many people, the word ‘geometry’ conjures up circles, cubes, cylinders, and other regular or "
+                                     + "smooth objects.Familiar artefacts, such as buildings, furniture, or cars, make wide use of such shapes."
+                                     + "However, many phenomena in nature and science are anything but regular or smooth.For example, "
+                                     + "a natural landscape may include bushes, trees, rugged mountains, and clouds,"
+                                     + "which are far too intricate to be represented by classical geometric shapes",
+                        Price = 13.19m,
                     },
                     new BookDTO
                     {
                         Id = 2,
-                        Isbn = "ISBN0201485672",
-                        Author = "M. Fowler",
-                        Title = "Refactoring",
-                        Description = "As the application of object technology--particularly the Java programming language--has become commonplace, a new problem has emerged to confront the software development community.",
-                        Price = 12.45m,
+                        Isbn = "ISBN056458672",
+                        Author = "Benoit Mandelbrot",
+                        Title = "The Fractal Geometry Of Nature",
+                        Description = "This Essay brings together a number of analyses in diverse sciences, and it "
+                                    + "promotes a new mathematical and philosophical synthesis.Thus, it serves as both a casebook and a manifesto. Furthermore, "
+                                    + "it reveals a totally new world of plastic beauty.",
+                        Price = 19.13m,
                     },
                     new BookDTO
                     {
                         Id = 3,
-                        Isbn = "ISBN0131101633",
-                        Author = "B. W. Kernighan, D. M. Ritchie",
-                        Title = "C Programming Language",
-                        Description = "Known as the bible of C, this classic bestseller introduces the C programming language and illustrates algorithms, data structures, and programming techniques.",
+                        Isbn = "ISBN0135555533",
+                        Author = "The Fractal Geometry Of Nature",
+                        Title = "Arthur Clarke",
+                        Description = "A geometry able to include mountains and clouds now exists. I put it together in 1975, "
+                                    + "but of course it incorporates numerous pieces that have been around for a very long time. "
+                                    + "Like everything in science, this new geometry has very, very deep and long roots.",
                         Price = 14.98m,
                     }
                 );
