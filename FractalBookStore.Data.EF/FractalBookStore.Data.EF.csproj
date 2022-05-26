@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FractalBookStore.Web\FractalBookStore.Web.csproj" />
     <ProjectReference Include="..\FractalBookStore\FractalBookStore.csproj" />
   </ItemGroup>
 
