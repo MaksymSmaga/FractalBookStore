@@ -70,7 +70,9 @@ namespace FractalBookStore.Web.Controllers
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            order.RemoveItem(bookId);
+            var book = _bookRepository.GetById(bookId);
+
+            order.RemoveItem(book);
 
             SaveOrderToAction(order, cart);
 

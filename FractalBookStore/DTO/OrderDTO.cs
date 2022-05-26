@@ -7,13 +7,10 @@ namespace FractalBookStore.DTO
     {
         public int Id { get; set; }
 
-        private readonly List<OrderItem> _items;
+        private readonly List<OrderItem> _items = new List<OrderItem>();
 
-        public IReadOnlyCollection<OrderItem> Items
-        {
-            get { return _items; }
-        }
 
+        public IList<OrderItemDTO> Items { get; set; } = new List<OrderItemDTO>();
         public int TotalCount => _items.Sum(item => item.Count);
 
         public decimal TotalPrice => _items.Sum(item => item.Price * item.Count);

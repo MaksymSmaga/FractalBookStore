@@ -47,7 +47,7 @@ namespace FractalBookStore
             set => _dto.Price = value;
         }
 
-        internal Book(BookDTO dto)
+        public Book(BookDTO dto)
         {
             _dto = dto;
         }

@@ -4,80 +4,64 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace FractalBookStore
-{   // MementoPattern.
-    // To hide Class Object,
-    // but to know all properities save it into DB.
-
-    // DTOPattern - Data Transfer Object.
-    // - simple model of Class Object.
+{
     public class Order
     {
-        private readonly OrderDTO _dto;
+        private readonly OrderDTO dto;
 
-        private readonly List<OrderItem> _items;
-        public int Id => _dto.Id;
+        public int Id => dto.Id;
 
-        public IReadOnlyCollection<OrderItem> Items
-        {
-            get { return _items; }
-        }
+        public OrderItemCollection Items { get; }
 
-        public int TotalCount => _items.Sum(item => item.Count);
-
-        public decimal TotalPrice => _items.Sum(item => item.Price * item.Count);
-
+        public int TotalCount => Items.Sum(item => item.Count);
+        public decimal TotalPrice => Items.Sum(item => item.Price * item.Count);
         public Order(OrderDTO dto)
         {
-            _dto = dto;
-        }
-
-        public OrderItem GetItem(int bookId)
-        {
-            int index = _items.FindIndex(item => item.BookId == bookId);
-            if (index == -1)
-                ThrowBookException("Book is not found.", bookId);
-            return _items[index];
-        }
-        public void AddOrUpdateItem(Book book, int count)
-        {
-            if (book == null)
-                throw new ArgumentNullException(nameof(book));
-
-            int index = _items.FindIndex(x => x.BookId == book.Id);
-
-            if (index == -1)
-                _items.Add(new OrderItem(new OrderItemDTO()));
-            else
-                _items[index].Count += count;
-        }
-
-        public void RemoveItem(int bookId)
-        {
-            int index = _items.FindIndex(item => item.BookId == bookId);
-
-            if (index == -1)
-                ThrowBookException("Order doesn`t have a spec book.", bookId);
-
-            _items.RemoveAt(index);
-        }
-
-        private void ThrowBookException(string message, int bookId)
-        {
-            var exception = new InvalidOperationException(message);
-            exception.Data["BookId"] = bookId;
-
-            throw exception;
+            this.dto = dto;
+            Items = new OrderItemCollection(dto);
         }
 
 
-        public static class DTOFactory
+        public static class DtoFactory
         {
             public static OrderDTO Create() => new OrderDTO();
         }
         public static class Mapper
         {
             public static Order Map(OrderDTO dto) => new Order(dto);
-            public static OrderDTO Map(Order domain) => domain._dto;
+
+            public static OrderDTO Map(Order domain) => domain.dto;
         }
+
+        public void AddOrUpdateItem(Book book, int count)
+        {
+            if (book == null)
+                throw new ArgumentNullException(nameof(book));
+
+            var item = Items.SingleOrDefault(x => x.BookId == book.Id);
+
+            if (item == null)
+            {
+                Items.Add(book.Id, book.Price, count);
+            }
+            else
+            {
+                Items.Remove(item.BookId);
+                Items.Add(book.Id, book.Price, count);
+            }
+        }
+
+        public void RemoveItem(Book book)
+        {
+         if (book == null)
+             throw new ArgumentNullException(nameof(book));
+
+             var item = Items.SingleOrDefault(x => x.BookId == book.Id);
+
+        if (item == null)
+           Items.Remove(item.BookId);
+        }
+
+        public OrderItem GetItem(int bookId)  => Items.Get(bookId); 
     }
 }
