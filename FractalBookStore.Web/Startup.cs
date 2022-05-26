@@ -24,8 +24,7 @@ namespace FractalBookStore.Web
             services.AddControllersWithViews();
 
             // To declare Dependency injection.
-            // services.AddSingleton<IBookRepository,MockBookRepository>();
-            // services.AddSingleton<IOrderRepository, OrderRepository>();
+            
 
             // To declare of BookService - search servise.
             // services.AddSingleton<BookService>();
@@ -34,7 +33,7 @@ namespace FractalBookStore.Web
             services.AddDistributedMemoryCache();
 
 
-             
+            services.AddEFRepository(Configuration.GetConnectionString("FBStore"));
 
             // To use Sessions.
             services.AddSession(options =>

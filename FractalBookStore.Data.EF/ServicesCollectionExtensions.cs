@@ -14,8 +14,12 @@ namespace FractalBookStore.Data.EF
                 options =>
                 {
                     options.UseSqlServer(connectionString);
-                });
+                },
+                ServiceLifetime.Transient
+                );
 
+            services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
             return services;
         }
     }
