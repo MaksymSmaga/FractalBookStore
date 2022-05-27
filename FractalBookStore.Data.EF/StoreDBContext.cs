@@ -3,7 +3,7 @@ using FractalBookStore.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace FractalBookStore.Data.EF
-{   // Add-Migration Initial -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
+{   // Add-Migration InitialCreate -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
     // Update-Database 
     public class StoreDBContext : DbContext
     {
