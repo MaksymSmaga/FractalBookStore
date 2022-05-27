@@ -10,19 +10,10 @@ namespace FractalBookStore.DTO
 
         private readonly List<OrderItem> _items = new List<OrderItem>();
 
-
         public IList<OrderItemDTO> Items { get; set; } = new List<OrderItemDTO>();
-        public int TotalCount
-        {
-            get;
-            set;
-        }
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal TotalPrice
-        {
-            get;
-            set;
-        }
+        public int TotalCount { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal TotalPrice{get; set;}
     }
 }

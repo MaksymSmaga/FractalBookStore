@@ -2,10 +2,9 @@
 using FractalBookStore.DTO;
 using Microsoft.EntityFrameworkCore;
 
-using System;
-
 namespace FractalBookStore.Data.EF
-{
+{   // Add-Migration Initial -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
+    // Update-Database 
     public class StoreDBContext : DbContext
     {
         public DbSet<BookDTO> Books { get; set; }
@@ -20,7 +19,7 @@ namespace FractalBookStore.Data.EF
         {
             BuidBooks(modelBuilder);
             BuidOrderItems(modelBuilder);
-           // BuildOrders(modelBuilder);
+            BuildOrders(modelBuilder);
         }
 
         public static void BuidBooks(ModelBuilder modelBuilder)
@@ -98,8 +97,8 @@ namespace FractalBookStore.Data.EF
                       .HasColumnType("Count")
                       .HasMaxLength(10);
 
-                 action.Property(dto => dto.TotalPrice)
-                       .HasColumnType("Money");
+                action.Property(dto => dto.TotalPrice)
+                      .HasColumnType("Money");
             });
         }
     }
