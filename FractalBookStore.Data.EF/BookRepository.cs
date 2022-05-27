@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FractalBookStore.Data.EF
 {
-    public class BookRepository : IBookRepository
+    class BookRepository : IBookRepository
     {
         private readonly DbContextFactory _dBContextFactory;
 

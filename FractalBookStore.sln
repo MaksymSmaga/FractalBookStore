@@ -19,7 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Domain.Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Domain.Tests", "FractalBookStore.Domain.Tests\FractalBookStore.Domain.Tests.csproj", "{DF5DA06D-1413-4B46-9F56-64ABC0E4CA54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalBookStore.Data.EF", "FractalBookStore.Data.EF\FractalBookStore.Data.EF.csproj", "{FE8575CF-BF9F-4F49-B833-18C2DC8BB3FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FractalBookStore.Data.EF", "FractalBookStore.Data.EF\FractalBookStore.Data.EF.csproj", "{FE8575CF-BF9F-4F49-B833-18C2DC8BB3FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0379627A-15EE-4A70-8FF2-5129D0392D88}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
