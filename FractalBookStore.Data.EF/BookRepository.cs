@@ -1,31 +1,62 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace FractalBookStore.Data.EF
 {
     public class BookRepository : IBookRepository
     {
         private readonly DbContextFactory _dBContextFactory;
+
         public Book[] GetAllByIds(IEnumerable<int> bookIds)
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            return dbContext.Books
+                            .Where(book => bookIds.Contains(book.Id))
+                            .AsEnumerable()
+                            .Select(Book.Mapper.Map)
+                            .ToArray();
         }
 
-        public Book[] GetAllByIsbn(string titlePart)
+        public Book[] GetAllByIsbn(string isbn)
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            if (Book.TryFormatedIsbn(isbn, out string formatedIsbn))
+            {
+                return dbContext.Books
+                            .Where(book => book.Isbn == formatedIsbn)
+                            .AsEnumerable()
+                            .Select(Book.Mapper.Map)
+                            .ToArray();
+            }
+            return new Book[0];
         }
 
         public Book[] GetAllByTitleOrAuthor(string titleOrAuthor)
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var parameter = new SqlParameter("@titleOrAuthor", titleOrAuthor);
+
+            return dbContext.Books
+                        .FromSqlRaw(
+                        "SELECT * FROM Books WHERE CONTAINS ((Author,Title), @titleOrAuthor", parameter)
+                        .AsEnumerable()
+                        .Select(Book.Mapper.Map)
+                        .ToArray();
         }
 
         public Book GetById(int id)
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var dto = dbContext.Books
+                .Single(book => book.Id == id);
+            return Book.Mapper.Map(dto);
         }
     }
 }
