@@ -17,7 +17,8 @@ namespace FractalBookStore.Data.EF
                 },
                 ServiceLifetime.Transient
                 );
-
+            services.AddScoped<Dictionary<Type, StoreDBContext>>();
+            services.AddSingleton<DbContextFactory>();
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
             return services;
