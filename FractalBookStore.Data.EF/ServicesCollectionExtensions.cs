@@ -21,6 +21,7 @@ namespace FractalBookStore.Data.EF
             services.AddSingleton<DbContextFactory>();
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
+             
             return services;
         }
     }

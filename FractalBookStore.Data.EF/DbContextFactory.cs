@@ -2,11 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FractalBookStore.Data.EF
 {
-    class DbContextFactory
+    public class DbContextFactory
     {  // to get http scope
         private readonly IHttpContextAccessor _httpContextAccessor;
         public DbContextFactory(IHttpContextAccessor httpContextAccessor)

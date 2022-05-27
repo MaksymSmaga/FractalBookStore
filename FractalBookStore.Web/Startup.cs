@@ -1,11 +1,12 @@
-using FractalBookStore.Domain.Services;
-using FractalBookStore.Memory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FractalBookStore.Data.EF;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using FractalBookStore.Domain.Services;
 
 namespace FractalBookStore.Web
 {
@@ -23,14 +24,16 @@ namespace FractalBookStore.Web
         {
             services.AddControllersWithViews();
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             // To declare Dependency injection.
-            
+
 
             // To declare of BookService - search servise.
-            // services.AddSingleton<BookService>();
+             services.AddSingleton<BookService>();
 
             // Cart Data in cash
             services.AddDistributedMemoryCache();
+
 
 
             services.AddEFRepository(Configuration.GetConnectionString("FBStore"));
@@ -39,7 +42,7 @@ namespace FractalBookStore.Web
             services.AddSession(options =>
             {
                 // Time term of the session.
-                options.IdleTimeout = System.TimeSpan.FromMinutes(60);
+                options.IdleTimeout = System.TimeSpan.FromMinutes(10);
                 
                 // To get from server side.
                 options.Cookie.HttpOnly = true;
