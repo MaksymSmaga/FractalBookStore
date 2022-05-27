@@ -4,7 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FractalBookStore.Data.EF
 {   // Add-Migration InitialCreate -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
-    // Update-Database  
+    // Update-Database -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
+    // Add-Migration FullTextSearch -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
+    #region
+    //migrationBuilder.Sql("CREATE FULLTEXT CATALOG StoreFullTextCatalog AS DEFAULT", suppressTransaction:true);
+    //migrationBuilder.Sql("CREATE FULLTEXT INDEX ON Books(Title) KEY INDEX PK_Books WITH STOPLIST=SYSTEM", suppressTransaction: true);
+
+    //migrationBuilder.Sql("DROP FULLTEXT CATALOG StoreFullTextCatalog AS DEFAULT", suppressTransaction: true);
+    //migrationBuilder.Sql("DROP FULLTEXT INDEX ON Books(Title) KEY INDEX PK_Books WITH STOPLIST=SYSTEM", suppressTransaction: true);
+    #endregion
+    // Update-Database -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
     public class StoreDBContext : DbContext
     {
         public DbSet<BookDTO> Books { get; set; }
