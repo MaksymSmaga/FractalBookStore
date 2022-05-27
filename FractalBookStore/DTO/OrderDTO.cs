@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace FractalBookStore.DTO
@@ -13,14 +14,14 @@ namespace FractalBookStore.DTO
         public IList<OrderItemDTO> Items { get; set; } = new List<OrderItemDTO>();
         public int TotalCount
         {
-            get { return _items.Sum(item => item.Count); }
-            set { }
+            get;
+            set;
         }
-
+        [Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice
         {
-            get { return _items.Sum(item => item.Price * item.Count); }
-            set { }
+            get;
+            set;
         }
 
     }

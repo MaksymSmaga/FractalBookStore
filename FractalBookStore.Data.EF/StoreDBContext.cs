@@ -20,7 +20,7 @@ namespace FractalBookStore.Data.EF
         {
             BuidBooks(modelBuilder);
             BuidOrderItems(modelBuilder);
-            BuildOrders(modelBuilder);
+           // BuildOrders(modelBuilder);
         }
 
         public static void BuidBooks(ModelBuilder modelBuilder)
@@ -98,8 +98,8 @@ namespace FractalBookStore.Data.EF
                       .HasColumnType("Count")
                       .HasMaxLength(10);
 
-                action.Property(dto => dto.TotalPrice)
-                      .HasColumnType("Money");
+                 action.Property(dto => dto.TotalPrice)
+                       .HasColumnType("Money");
             });
         }
     }
