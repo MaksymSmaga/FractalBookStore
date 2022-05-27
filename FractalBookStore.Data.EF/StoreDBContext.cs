@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FractalBookStore.Data.EF
 {   // Add-Migration InitialCreate -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
-    // Update-Database 
+    // Update-Database  
     public class StoreDBContext : DbContext
     {
         public DbSet<BookDTO> Books { get; set; }
@@ -94,7 +94,6 @@ namespace FractalBookStore.Data.EF
             modelBuilder.Entity<OrderDTO>(action =>
             {
                 action.Property(dto => dto.TotalCount)
-                      .HasColumnType("Count")
                       .HasMaxLength(10);
 
                 action.Property(dto => dto.TotalPrice)
