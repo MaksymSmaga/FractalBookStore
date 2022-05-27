@@ -1,24 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace FractalBookStore.Data.EF
 {
-    public class OrderRepository : IOrderRepository
+    class OrderRepository : IOrderRepository
     {
+        private readonly DbContextFactory _dBContextFactory;
+
+        public OrderRepository(DbContextFactory dBContextFactory)
+        {
+            _dBContextFactory = dBContextFactory;
+        }
+
         public Order Create()
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var dto = Order.DtoFactory.Create();
+            dbContext.Orders.Add(dto);
+            dbContext.SaveChanges();
+
+            return Order.Mapper.Map(dto);
         }
 
         public Order GetById(int id)
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var dto = dbContext.Orders
+                               .Include(order => order.Items)
+                               .Single(order => order.Id == id);
+
+            return Order.Mapper.Map(dto);
         }
 
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+            dbContext.SaveChanges();
         }
     }
 }

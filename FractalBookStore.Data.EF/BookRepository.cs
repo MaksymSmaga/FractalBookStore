@@ -10,6 +10,11 @@ namespace FractalBookStore.Data.EF
     {
         private readonly DbContextFactory _dBContextFactory;
 
+        public BookRepository(DbContextFactory dBContextFactory)
+        {
+            _dBContextFactory = dBContextFactory;
+        }
+
         public Book[] GetAllByIds(IEnumerable<int> bookIds)
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
