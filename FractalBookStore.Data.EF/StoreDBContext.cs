@@ -43,7 +43,8 @@ namespace FractalBookStore.Data.EF
                       .IsRequired();
 
                 action.Property(dto => dto.Price)
-                      .HasColumnType("money");
+                       .IsRequired();
+                      //.HasColumnType("money");
 
                 action.HasData(
                     new BookDTO
@@ -57,7 +58,7 @@ namespace FractalBookStore.Data.EF
                                      + "However, many phenomena in nature and science are anything but regular or smooth.For example, "
                                      + "a natural landscape may include bushes, trees, rugged mountains, and clouds,"
                                      + "which are far too intricate to be represented by classical geometric shapes",
-                        Price = 13.19m,
+                        Price = 13m,
                     },
                     new BookDTO
                     {
@@ -68,7 +69,7 @@ namespace FractalBookStore.Data.EF
                         Description = "This Essay brings together a number of analyses in diverse sciences, and it "
                                     + "promotes a new mathematical and philosophical synthesis.Thus, it serves as both a casebook and a manifesto. Furthermore, "
                                     + "it reveals a totally new world of plastic beauty.",
-                        Price = 19.13m,
+                        Price = 19m,
                     },
                     new BookDTO
                     {
@@ -79,7 +80,7 @@ namespace FractalBookStore.Data.EF
                         Description = "A geometry able to include mountains and clouds now exists. I put it together in 1975, "
                                     + "but of course it incorporates numerous pieces that have been around for a very long time. "
                                     + "Like everything in science, this new geometry has very, very deep and long roots.",
-                        Price = 14.98m,
+                        Price = 14m,
                     }
                 );
             });

@@ -13,7 +13,7 @@ namespace FractalBookStore.DTO
         public IList<OrderItemDTO> Items { get; set; } = new List<OrderItemDTO>();
         public int TotalCount { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(1,0)")]
         public decimal TotalPrice{get; set;}
     }
 }
