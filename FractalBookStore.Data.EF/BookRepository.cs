@@ -45,11 +45,14 @@ namespace FractalBookStore.Data.EF
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
 
+            if (String.IsNullOrEmpty(titleOrAuthor)) titleOrAuthor = "Fractals";
+          
             var parameter = new SqlParameter("@titleOrAuthor", titleOrAuthor);
 
             return dbContext.Books
-                        .FromSqlRaw(
-                        "SELECT * FROM Books WHERE CONTAINS ((Title), @titleOrAuthor)", parameter)
+                        .FromSqlRaw(                 
+                        "SELECT * FROM Books WHERE Title LIKE '%" + titleOrAuthor + "%'" +
+                                             " OR Author LIKE '%" + titleOrAuthor + "%'", parameter)
                         .AsEnumerable()
                         .Select(Book.Mapper.Map)
                         .ToArray();

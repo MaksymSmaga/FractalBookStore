@@ -74,8 +74,8 @@ namespace FractalBookStore.Data.EF
                     {
                         Id = 3,
                         Isbn = "ISBN0135555533",
-                        Author = "The Fractal Geometry Of Nature",
-                        Title = "Arthur Clarke",
+                        Author = "Arthur Clarke",
+                        Title = "The Fractal Geometry Of Nature",
                         Description = "A geometry able to include mountains and clouds now exists. I put it together in 1975, "
                                     + "but of course it incorporates numerous pieces that have been around for a very long time. "
                                     + "Like everything in science, this new geometry has very, very deep and long roots.",
