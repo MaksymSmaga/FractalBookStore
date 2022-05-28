@@ -49,7 +49,7 @@ namespace FractalBookStore.Data.EF
 
             return dbContext.Books
                         .FromSqlRaw(
-                        "SELECT * FROM Books WHERE CONTAINS ((Author,Title), @titleOrAuthor", parameter)
+                        "SELECT * FROM Books WHERE CONTAINS ((Title), @titleOrAuthor)", parameter)
                         .AsEnumerable()
                         .Select(Book.Mapper.Map)
                         .ToArray();
