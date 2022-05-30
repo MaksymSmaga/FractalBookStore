@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace FractalBookStore.Web.Controllers
 {
@@ -9,10 +10,10 @@ namespace FractalBookStore.Web.Controllers
         {
             _bookRepository = bookRepository;
         }
-
-        public IActionResult Index(int id)
+         
+        public async Task<IActionResult> Index(int id)
         {
-            Book book = _bookRepository.GetById(id);
+            Book book = await _bookRepository.GetByIdAsync(id);
 
             return View(book);
         }

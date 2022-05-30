@@ -1,5 +1,6 @@
 ﻿using FractalBookStore.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace FractalBookStore.Web.Controllers
 {
@@ -15,14 +16,9 @@ namespace FractalBookStore.Web.Controllers
             _bookService = bookService;
         }
 
-        /// <summary>
-        /// Get Model of data the for a Razor page.
-        /// </summary>
-        /// <param name="query">query for search</param>
-        /// <returns> Model of data - Book[]</returns>
-        public IActionResult Index(string query)
+        public async Task<IActionResult> Index(string query)
         {
-            var books = _bookService.GetAllByQuery(query);
+            var books = await _bookService.GetAllByQueryAsync(query);
 
             return View(books);
         }

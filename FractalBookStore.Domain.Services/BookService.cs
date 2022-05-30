@@ -1,5 +1,6 @@
 ﻿using FractalBookStore.DTOFactory;
 using System;
+using System.Threading.Tasks;
 
 namespace FractalBookStore.Domain.Services
 {
@@ -12,11 +13,11 @@ namespace FractalBookStore.Domain.Services
             _bookRepository = bookRepository;
         }
 
-        public Book[] GetAllByQuery(string query)
+        public async Task<Book[]> GetAllByQueryAsync(string query)
         {
             if(BookDTOFactory.IsIsbn(query))
-                return _bookRepository.GetAllByIsbn(query);
-            return _bookRepository.GetAllByTitleOrAuthor(query);
+                return await _bookRepository.GetAllByIsbnAsync(query);
+            return await _bookRepository.GetAllByTitleOrAuthorAsync(query);
         }
     }
 }

@@ -1,6 +1,11 @@
 ﻿using FractalBookStore.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FractalBookStore.Web.Controllers
 {
@@ -15,23 +20,23 @@ namespace FractalBookStore.Web.Controllers
             _orderRepository = orderRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (HttpContext.Session.TryGetCart(out Cart cart))
             {
                 var order = _orderRepository.GetById(cart.OrderId);
 
-                OrderModel model = Map(order);
+                OrderModel model = await Map(order);
                 return View(model);
 
             }
             return View("Empty");
         }
 
-        private OrderModel Map(Order order)
+        private async Task<OrderModel> Map(Order order)
         {
             var bookIds = order.Items.Select(item => item.BookId);
-            var books = _bookRepository.GetAllByIds(bookIds);
+            var books = await _bookRepository.GetAllByIdsAsync(bookIds);
             var itemModels = from item in order.Items
                              join book in books on item.BookId equals book.Id
                              select new OrderItemModel
@@ -51,13 +56,13 @@ namespace FractalBookStore.Web.Controllers
             };
 
         }
-         
- 
-        public IActionResult AddItem(int bookId, int count = 1 )
+
+
+        public async Task<IActionResult> AddItem(int bookId, int count = 1)
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            var book = _bookRepository.GetById(bookId);
+            var book = await _bookRepository.GetByIdAsync(bookId);
 
             order.AddOrUpdateItem(book, count);
 
@@ -66,11 +71,11 @@ namespace FractalBookStore.Web.Controllers
             return RedirectToAction("Index", "Book", new { id = bookId });
 
         }
-        public IActionResult RemoveItem(int bookId)
+        public async Task<IActionResult> RemoveItem(int bookId)
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
 
-            var book = _bookRepository.GetById(bookId);
+            var book = await _bookRepository.GetByIdAsync(bookId);
 
             order.RemoveItem(book);
 
@@ -83,13 +88,42 @@ namespace FractalBookStore.Web.Controllers
         public IActionResult UpdateItem(int bookId, int count)
         {
             (Order order, Cart cart) = GetOrCreateOrderAndCart();
-            
+
             order.GetItem(bookId).Count = count;
 
             SaveOrderToAction(order, cart);
 
-            return RedirectToAction("Index", "Order" );
+            return RedirectToAction("Index", "Order");
         }
+
+
+        public IActionResult SendMail()
+        {
+            using (var client = new SmtpClient())
+            {
+                (Order order, Cart cart) = GetOrCreateOrderAndCart();
+
+                var message = new MailMessage("from@protonmail.com", "msmaga@protonmail.com");
+                message.Subject = "Order #" + order.Id;
+
+                var builder = new StringBuilder();
+
+                var str = "";
+                foreach (var item in order.Items)
+                {
+                    builder.Append("{0}, {1}", item.BookId, item.Count);
+                    str +=string.Format("{0}, {1}", item.BookId, item.Count);
+                    str += $"{item.BookId}, {item.Count}";
+
+                    builder.AppendLine();
+                    str += Environment.NewLine;
+                }
+                message.Body = builder.ToString();
+                client.Send(message);   
+            }
+            return RedirectToAction("Index", "Order");
+        }
+
          
         private (Order order, Cart cart) GetOrCreateOrderAndCart()
         {
