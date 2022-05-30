@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FractalBookStore.DTOFactory;
+using System;
 
 namespace FractalBookStore.Domain.Services
 {
@@ -10,9 +11,10 @@ namespace FractalBookStore.Domain.Services
         {
             _bookRepository = bookRepository;
         }
+
         public Book[] GetAllByQuery(string query)
         {
-            if(Book.IsIsbn(query))
+            if(BookDTOFactory.IsIsbn(query))
                 return _bookRepository.GetAllByIsbn(query);
             return _bookRepository.GetAllByTitleOrAuthor(query);
         }

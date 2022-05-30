@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using FractalBookStore.DTOFactory;
+using FractalBookStore.Mappers;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +24,7 @@ namespace FractalBookStore.Data.EF
             return dbContext.Books
                             .Where(book => bookIds.Contains(book.Id))
                             .AsEnumerable()
-                            .Select(Book.Mapper.Map)
+                            .Select(BookMapper.Map)
                             .ToArray();
         }
 
@@ -30,12 +32,12 @@ namespace FractalBookStore.Data.EF
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
 
-            if (Book.TryFormatedIsbn(isbn, out string formatedIsbn))
+            if (BookDTOFactory.TryFormatedIsbn(isbn, out string formatedIsbn))
             {
                 return dbContext.Books
                             .Where(book => book.Isbn == formatedIsbn)
                             .AsEnumerable()
-                            .Select(Book.Mapper.Map)
+                            .Select(BookMapper.Map)
                             .ToArray();
             }
             return new Book[0];
@@ -55,7 +57,7 @@ namespace FractalBookStore.Data.EF
                         "SELECT * FROM Books WHERE Title LIKE '%" + titleOrAuthor + "%'" +
                                              " OR Author LIKE '%" + titleOrAuthor + "%'", parameter)
                         .AsEnumerable()
-                        .Select(Book.Mapper.Map)
+                        .Select(BookMapper.Map)
                         .ToArray();
         }
 
@@ -65,7 +67,7 @@ namespace FractalBookStore.Data.EF
 
             var dto = dbContext.Books
                 .Single(book => book.Id == id);
-            return Book.Mapper.Map(dto);
+            return BookMapper.Map(dto);
         }
     }
 }

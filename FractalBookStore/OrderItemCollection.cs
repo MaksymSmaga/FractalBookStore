@@ -1,4 +1,6 @@
 ﻿using FractalBookStore.DTO;
+using FractalBookStore.DTOFactory;
+using FractalBookStore.Mappers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +18,7 @@ namespace FractalBookStore
             this.orderDto = orderDto ?? throw new ArgumentNullException(nameof(orderDto));
 
             items = orderDto.Items
-                            .Select(OrderItem.Mapper.Map)
+                            .Select(OrderItemMapper.Map)
                             .ToList();
         }
 
@@ -58,10 +60,10 @@ namespace FractalBookStore
             if (TryGet(bookId, out _))
                 throw new InvalidOperationException("Book already exists.");
 
-            var orderItemDto = OrderItem.DTOFactory.Create(orderDto, bookId, price, count);
+            var orderItemDto = OrderItemDTOFactory.Create(orderDto, bookId, price, count);
             orderDto.Items.Add(orderItemDto);
 
-            OrderItem orderItem = OrderItem.Mapper.Map(orderItemDto);
+            OrderItem orderItem = OrderItemMapper.Map(orderItemDto);
             items.Add(orderItem);
 
             return orderItem;

@@ -1,11 +1,12 @@
 ﻿using FractalBookStore.DTO;
+using FractalBookStore.DTOFactory;
 using System;
 
 namespace FractalBookStore
 {
     public class OrderItem
     {
-        private readonly OrderItemDTO dto;
+        internal readonly OrderItemDTO dto;
 
         public int BookId => dto.BookId;
 
@@ -14,7 +15,7 @@ namespace FractalBookStore
             get { return dto.Count; }
             set
             {
-                ThrowIfInvalidCount(value);
+                OrderItemDTOFactory.ThrowIfInvalidCount(value);
 
                 dto.Count = value;
             }
@@ -31,36 +32,7 @@ namespace FractalBookStore
             this.dto = dto;
         }
 
-        private static void ThrowIfInvalidCount(int count)
-        {
-            if (count <= 0)
-                throw new ArgumentOutOfRangeException("Count must be greater than zero.");
-        }
+        
 
-        public static class DTOFactory
-        {
-            public static OrderItemDTO Create(OrderDTO order, int bookId, decimal price, int count)
-            {
-                if (order == null)
-                    throw new ArgumentNullException(nameof(order));
-
-                ThrowIfInvalidCount(count);
-
-                return new OrderItemDTO
-                {
-                    BookId = bookId,
-                    Price = price,
-                    Count = count,
-                    Order = order,
-                };
-            }
-        }
-
-        public static class Mapper
-        {
-            public static OrderItem Map(OrderItemDTO dto) => new OrderItem(dto);
-
-            public static OrderItemDTO Map(OrderItem domain) => domain.dto;
-        }
     }
 }

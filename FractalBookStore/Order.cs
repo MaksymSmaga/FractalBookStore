@@ -7,7 +7,7 @@ namespace FractalBookStore
 {
     public class Order
     {
-        private readonly OrderDTO dto;
+        internal readonly OrderDTO dto;
 
         public int Id => dto.Id;
         public int TotalCount => Items.Sum(item => item.Count);
@@ -21,18 +21,7 @@ namespace FractalBookStore
         }
 
 
-        public static class DtoFactory
-        {
-            public static OrderDTO Create() => new OrderDTO();
-        }
-        public static class Mapper
-        {
-            public static Order Map(OrderDTO dto) => new Order(dto);
-
-            public static OrderDTO Map(Order domain) => domain.dto;
-        }
-
-
+           
 
         public void AddOrUpdateItem(Book book, int count)
         {
