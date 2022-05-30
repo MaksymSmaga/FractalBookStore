@@ -1,7 +1,6 @@
-﻿
-
-using FractalBookStore.DTO;
+﻿using FractalBookStore.DTO;
 using System;
+
 namespace FractalBookStore
 {
     public class OrderItem

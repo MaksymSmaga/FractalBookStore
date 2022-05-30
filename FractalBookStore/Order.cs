@@ -10,11 +10,10 @@ namespace FractalBookStore
         private readonly OrderDTO dto;
 
         public int Id => dto.Id;
-
-        public OrderItemCollection Items { get; }
-
         public int TotalCount => Items.Sum(item => item.Count);
         public decimal TotalPrice => Items.Sum(item => item.Price * item.Count);
+        public OrderItemCollection Items { get; }
+
         public Order(OrderDTO dto)
         {
             this.dto = dto;
@@ -32,6 +31,8 @@ namespace FractalBookStore
 
             public static OrderDTO Map(Order domain) => domain.dto;
         }
+
+
 
         public void AddOrUpdateItem(Book book, int count)
         {
@@ -53,15 +54,15 @@ namespace FractalBookStore
 
         public void RemoveItem(Book book)
         {
-         if (book == null)
-             throw new ArgumentNullException(nameof(book));
+            if (book == null)
+                throw new ArgumentNullException(nameof(book));
 
-             var item = Items.SingleOrDefault(x => x.BookId == book.Id);
+            var item = Items.SingleOrDefault(x => x.BookId == book.Id);
 
-        if (item == null)
-           Items.Remove(item.BookId);
+            if (item != null)
+                Items.Remove(item.BookId);
         }
 
-        public OrderItem GetItem(int bookId)  => Items.Get(bookId); 
+        public OrderItem GetItem(int bookId) => Items.Get(bookId);
     }
 }
