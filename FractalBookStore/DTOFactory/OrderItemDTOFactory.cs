@@ -5,7 +5,6 @@ namespace FractalBookStore.DTOFactory
 {
     public static class OrderItemDTOFactory
     {
-
         public static OrderItemDTO Create(OrderDTO order, int bookId, decimal price, int count)
         {
             if (order == null)

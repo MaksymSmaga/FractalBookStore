@@ -48,7 +48,7 @@ namespace FractalBookStore.Data.EF
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
 
             if (String.IsNullOrEmpty(titleOrAuthor)) 
-                titleOrAuthor = "Fractal";
+                titleOrAuthor = "";
           
             var parameter = new SqlParameter("@titleOrAuthor", titleOrAuthor);
 

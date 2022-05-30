@@ -34,7 +34,9 @@ namespace FractalBookStore
             else
             {
                 Items.Remove(item.BookId);
+
                 Items.Add(book.Id, book.Price, count);
+                
             }
         }
 
