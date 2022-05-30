@@ -22,6 +22,13 @@ namespace FractalBookStore.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(typeof(ExceptionFilter));
+            }
+            );
+
+
             services.AddControllersWithViews();
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -29,7 +36,7 @@ namespace FractalBookStore.Web
 
 
             // To declare of BookService - search servise.
-             services.AddSingleton<BookService>();
+            services.AddSingleton<BookService>();
 
             // Cart Data in cash
             services.AddDistributedMemoryCache();
@@ -43,7 +50,7 @@ namespace FractalBookStore.Web
             {
                 // Time term of the session.
                 options.IdleTimeout = System.TimeSpan.FromMinutes(10);
-                
+
                 // To get from server side.
                 options.Cookie.HttpOnly = true;
 
@@ -55,7 +62,8 @@ namespace FractalBookStore.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            // if (env.IsDevelopment())
+            if (false)
             {
                 app.UseDeveloperExceptionPage();
             }
