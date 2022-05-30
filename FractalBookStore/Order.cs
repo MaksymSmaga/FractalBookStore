@@ -20,9 +20,6 @@ namespace FractalBookStore
             Items = new OrderItemCollection(dto);
         }
 
-
-           
-
         public void AddOrUpdateItem(Book book, int count)
         {
             if (book == null)

@@ -1,6 +1,5 @@
 ﻿using FractalBookStore.DTO;
 using FractalBookStore.DTOFactory;
-using System;
 
 namespace FractalBookStore
 {
@@ -31,8 +30,5 @@ namespace FractalBookStore
         {
             this.dto = dto;
         }
-
-        
-
     }
 }
