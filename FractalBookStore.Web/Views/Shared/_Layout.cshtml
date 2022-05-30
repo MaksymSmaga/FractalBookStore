@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Store of Fractal Books</title>
+    <title>@ViewData["Title"] - Fractal Books Store</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Store of Fractal Books</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fractal Books Store</a>
             <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index","Search")" method="get">
                 <input class="form-control mr-sm-2" type="search" name="query" placeholder="Fractal in Author or Title" />
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -40,7 +40,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Store of Fractal Books
+            &copy; 2022 - Fractal Books Store
             <span align=”right” id="timer"></span>
 
             <script>
