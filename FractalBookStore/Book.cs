@@ -36,10 +36,26 @@ namespace FractalBookStore
             }
 
         }
+        public string ShortDescription
+        {
+            get => _dto.ShortDescription;
+            set => _dto.ShortDescription = value;
+        }
         public string Description
         {
             get => _dto.Description;
             set => _dto.Description = value;
+        }
+        public string Image
+        {
+            get => _dto.Image;
+            set => _dto.Image = value;
+        }
+
+        public bool Available
+        {
+            get => _dto.Availble;
+            set => _dto.Availble = value;
         }
         public decimal Price
         {

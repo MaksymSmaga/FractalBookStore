@@ -19,11 +19,11 @@ else
        @foreach (var book in Model)
       {
            
-          <li class="p-3 mb-2 bg-white text-black border border-info">
+          <li class = "img-thumbnail">
               <a href="@Url.Action("Index","Book", new{id=book.Id})"> Title: @book.Title</a>
+              <img class = "img-thumbnail" src="@book.Image" alt="@book.Image"/>
               <br/><br/>Description: @book.Description 
-              <br/><br/>Price: @book.Price $
-              <br/><br/>          
+              <br/><br/>Price: @book.Price $     
           </li>           
       }
    </ul>   

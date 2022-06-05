@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FractalBookStore.Domain.Tests
 {
-    internal class StubBookRepository : IBookRepository
+    internal class StubBookRepository //: IBookRepository
     {
         public Book[] ResultOfGetAllByIsbn { get; set; }
         public Book[] ResultOfGetAllByTitleOrAuthor { get; set; }

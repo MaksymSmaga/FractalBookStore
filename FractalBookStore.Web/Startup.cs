@@ -28,6 +28,7 @@ namespace FractalBookStore.Web
             }
             );
 
+           
 
             services.AddControllersWithViews();
 
@@ -40,8 +41,6 @@ namespace FractalBookStore.Web
 
             // Cart Data in cash
             services.AddDistributedMemoryCache();
-
-
 
             services.AddEFRepository(Configuration.GetConnectionString("FBStore"));
 
@@ -62,8 +61,8 @@ namespace FractalBookStore.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-             if (env.IsDevelopment())
-            
+            if (env.IsDevelopment())
+
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -73,16 +72,28 @@ namespace FractalBookStore.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            if (env.IsProduction())
+            {
+                app.Run(async (context) =>
+                {
+                    await context.Response.WriteAsync("Production!");
+                });
+            }
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
+ 
             // To connect session.
             app.UseSession();
 
             app.UseAuthorization();
 
+
+            ///app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+           // app.UseStaticFiles();
+            app.UseRouting();
+            //app.UseMvcWithDefaultRoute();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
