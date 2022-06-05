@@ -6,7 +6,7 @@
     ViewData["Title"] = "Result of the search";
 }
 
-<h3>Result of the search</h3>
+<h4>Result of the search:</h4>
 
 
 @if (Model.Length == 0)
@@ -15,12 +15,18 @@
 }
 else
 {
-   <ul>
+   <ul style=" list-style: none;">
        @foreach (var book in Model)
       {
-          <li><a href="@Url.Action("Index","Book", new{id=book.Id})">@book.Title</a></li>
+           
+          <li class="p-3 mb-2 bg-white text-black border border-info">
+              <a href="@Url.Action("Index","Book", new{id=book.Id})"> Title: @book.Title</a>
+              <br/><br/>Description: @book.Description 
+              <br/><br/>Price: @book.Price $
+              <br/><br/>          
+          </li>           
       }
-   </ul>
+   </ul>   
 }
  
  

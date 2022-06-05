@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Fractal Books Store</title>
+    <title >@ViewData["Title"] - Fractal Books Store</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,21 +11,21 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fractal Books Store</a>
-            <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index","Search")" method="get">
+            <form class="form-inline my-2 my-lg-0 text-right" action="@Url.Action("Index","Search")" method="get">
                 <input class="form-control mr-sm-2" type="search" name="query" placeholder="Fractal in Author or Title" />
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <span class="navbar-text ml-auto">
+            <span class="navbar-text ml-auto text-black">
                 @{
 
                     @if (Context.Session.TryGetCart(out Cart cart) && cart.TotalCount > 0)
                     {
-                        <a href="@Url.Action("Index","Order")"> @cart.TotalCount books - Amount: @cart.TotalPrice$</a>
+                        <a href="@Url.Action("Index","Order")">Cart: @cart.TotalCount books - Amount: @cart.TotalPrice$</a>
                     }
 
                     else
                     {
-                        @:Your cart is empty
+                        @:Cart is empty
                     }
 
                 }
