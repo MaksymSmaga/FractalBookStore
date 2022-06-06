@@ -1,5 +1,5 @@
-﻿using FractalBookStore.DTOFactory;
-using FractalBookStore.Mappers;
+﻿using FractalBookStore.DTO;
+using FractalBookStore.DTOFactory;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,7 +28,7 @@ namespace FractalBookStore.Data.EF
                             .Where(book => book.Isbn == formatedIsbn)
                             .ToArrayAsync();
 
-                return dtos.Select(BookMapper.Map)
+                return dtos.Select(Mapper.Map)
                             .ToArray();
             }
             return new Book[0];
@@ -42,7 +42,7 @@ namespace FractalBookStore.Data.EF
                             .Where(book => bookIds.Contains(book.Id))
                             .ToArrayAsync();
 
-            return dtos.Select(BookMapper.Map)
+            return dtos.Select(Mapper.Map)
                            .ToArray();
         }
 
@@ -61,7 +61,7 @@ namespace FractalBookStore.Data.EF
                                              " OR Author LIKE '%" + titleOrAuthor + "%'", parameter)
                         .ToArrayAsync();
 
-            return dtos.Select(BookMapper.Map)
+            return dtos.Select(Mapper.Map)
                          .ToArray();
         }
 
@@ -71,7 +71,7 @@ namespace FractalBookStore.Data.EF
 
             var dto = await dbContext.Books
                             .SingleAsync(book => book.Id == id);
-            return BookMapper.Map(dto);
+            return Mapper.Map(dto);
         }
 
     }    

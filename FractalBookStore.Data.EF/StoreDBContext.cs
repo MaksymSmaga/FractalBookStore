@@ -58,8 +58,10 @@ namespace FractalBookStore.Data.EF
                                      + "However, many phenomena in nature and science are anything but regular or smooth.For example, "
                                      + "a natural landscape may include bushes, trees, rugged mountains, and clouds,"
                                      + "which are far too intricate to be represented by classical geometric shapes",
-                        Image = "~/images/ImgBook.webp",
+                        Image = "/images/FractalsAVeryShortIntroduction.jpg",
+                        
                         Availble = true,
+                        IsBestSell = true,
                         Price = 13.19m,
                     },
                     new BookDTO
@@ -72,8 +74,9 @@ namespace FractalBookStore.Data.EF
                         Description = "This Essay brings together a number of analyses in diverse sciences, and it "
                                     + "promotes a new mathematical and philosophical synthesis.Thus, it serves as both a casebook and a manifesto. Furthermore, "
                                     + "it reveals a totally new world of plastic beauty.",
-                        Image = "~/images/FractalGeometry.jpg",
+                        Image = "/images/FractalGeometry.jpg",
                         Availble = true,
+                        IsBestSell = true,
                         Price = 19.13m,
                     },
                     new BookDTO
@@ -86,8 +89,9 @@ namespace FractalBookStore.Data.EF
                         Description = "A geometry able to include mountains and clouds now exists. I put it together in 1975, "
                                     + "but of course it incorporates numerous pieces that have been around for a very long time. "
                                     + "Like everything in science, this new geometry has very, very deep and long roots.",
-                        Image = "~/images/TheColoursOfInfinity.jpg",
-                        Availble = true,
+                        Image = "/images/TheColoursOfInfinity.jpg",
+                        Availble =false,
+                        IsBestSell = true,
                         Price = 14.98m,
                     },
                     new BookDTO
@@ -107,8 +111,9 @@ namespace FractalBookStore.Data.EF
                         "that give real form to abstract mathematical theories, to mystic fractals, to Andy " +
                         "Warhol as a solution to the Traveling Salesman Problem, these artworks embody some " +
                         "of strangest, most beautiful relationships among numbers and across dimensions.",
-                        Image = "~/images/MathArt.jpg",
+                        Image = "/images/MathArt.jpg",
                         Availble = true,
+                        IsBestSell = true,
                         Price = 13.92m,
                     },
                     new BookDTO
@@ -124,8 +129,9 @@ namespace FractalBookStore.Data.EF
                         "glossary of terms, this book will help you discover why fractals as so fascinating " +
                         "as you color and see a whole new way of looking at math. Lose yourself in these " +
                         "detailed images and create art worthy of framing!",
-                        Image = "~/images/MathColoringBookFractals.jpg",
+                        Image = "/images/MathColoringBookFractals.jpg",
                         Availble = true,
+                        IsBestSell = false,
                         Price = 17.84m,
                     },
                     new BookDTO
@@ -141,8 +147,9 @@ namespace FractalBookStore.Data.EF
                         "book have always existed, built into the numbers at creation. Dr. Lisle suggests " +
                         "that only the Christian worldview can make sense of this secret code. As such, " +
                         "the images in this book are a demonstration of the truth of that worldview.",
-                        Image = "~/images/FractalsTheSecretCodeOfCreation.jpg",
+                        Image = "/images/FractalsTheSecretCodeOfCreation.jpg",
                         Availble = true,
+                        IsBestSell = false,
                         Price = 9.99m,
                     },
 
@@ -165,6 +172,7 @@ namespace FractalBookStore.Data.EF
                         "and chaotic differential equations.",
                         Image = "~/images/ChaosAndFractals.jpg",
                         Availble = true,
+                        IsBestSell = false,
                         Price = 42.28m,
                     },
                     new BookDTO
@@ -183,8 +191,9 @@ namespace FractalBookStore.Data.EF
                         "Julia sets, random fractals and some physical applications. Also contains many diagrams " +
                         "and illustrative examples, includes computer drawings of fractals, and shows how to produce " +
                         "further drawings for themselves.",
-                        Image = "~/images/FractalGeometry.jpg",
+                        Image = "/images/FractalGeometry.jpg",
                         Availble = true,
+                        IsBestSell = false,
                         Price = 38.45m,
                     },
                     new BookDTO
@@ -204,8 +213,9 @@ namespace FractalBookStore.Data.EF
                          "formality.Benoit Mandelbrot gives a very personal account, in his idiosyncratic self - " +
                          "centred style, of his discovery of the fractals named after him and Adrien Douady " +
                          "explains the solved and unsolved problems relating to this amusingly complex set.",
-                        Image = "~/images/BeautyOfFractalsBook.jpg",
+                        Image = "/images/BeautyOfFractalsBook.jpg",
                         Availble = true,
+                        IsBestSell = false,
                         Price = 79.32m,
                     }
                 );

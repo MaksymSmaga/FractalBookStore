@@ -3,19 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title >@ViewData["Title"] - Fractal Books Store</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] - Fractal Books Store</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/css/site.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fractal Books Store</a>
-            <form class="form-inline my-2 my-lg-0 text-right" action="@Url.Action("Index","Search")" method="get">
-                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Fractal in Author or Title" />
+<body class="bg-dark">
+    <header class="border-bottom">
+        <nav class="navbar navbar-expand-sm bg-dark">
+
+            <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Fractal Books Store</a>
+
+            <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index","Search")" method="get">
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="I`m Feeling Fractal Lucky..." />
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <span class="navbar-text ml-auto text-black">
+
+            <span class="navbar-text ml-auto text-light">
                 @{
 
                     @if (Context.Session.TryGetCart(out Cart cart) && cart.TotalCount > 0)
@@ -32,13 +35,67 @@
             </span>
         </nav>
     </header>
-    <div class="container">
-        <main>
-            @RenderBody()
-        </main>
+
+
+
+    <div class="row">
+
+        <div class="col-sm bg-dark ">
+            <div class="card col bg-dark text-secondary">
+                  <div class="card-header bg-dark text-light">
+                  <b>Select:</b>
+                  </div>
+                <ul class="list-group list-group-flush border-info">
+                    <li class="list-group-item bg-dark text-light">Starter</li>
+                    <li class="list-group-item bg-dark text-light">Beginer</li>
+                    <li class="list-group-item bg-dark text-light">Advance</li>
+                    <li class="list-group-item bg-dark text-light">Expert</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row col-7">
+            <main>
+                @RenderBody()
+            </main>
+        </div>
+
+        <div class="col-sm">
+            <div class="card bg-dark border border-info">
+                <h5 class="card-title">Best Sellers:</h5>
+                
+                <div class="card-body">
+                    <img class="card-img-top" src="/image/MathArt.jpg" alt="Card image cap">
+                    <p class="card-text">Some quick example text to build</p>
+                    <a href="#" class="btn btn-primary">View</a>
+                </div>
+            </div>
+            <div class="card bg-dark text-light border border-info">
+                <h5 class="card-title">Coming soon:</h5>
+                
+                <div class="card-body">
+                     <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <p class="card-text">Some quick example text to build</p>
+                    <a href="#" class="btn btn-primary">View</a>
+                </div>
+            </div>
+
+            <div class="card bg-dark text-light border border-info">
+                <h5 class="card-title">Best proposition:</h5>
+
+              
+                <div class="card-body">
+                     <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <p class="card-text">Some quick example text to build</p>
+                    <a href="#" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+
+
+    <footer class="border-top footer text-muted bg-dark">
         <div class="container">
             &copy; 2022 - Fractal Books Store
             <span align=”right” id="timer"></span>
@@ -54,6 +111,9 @@
 
         </div>
     </footer>
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

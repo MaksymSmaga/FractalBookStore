@@ -1,13 +1,10 @@
 ﻿@using FractalBookStore;
- 
-@model  Book[]
+
+@model Book[]
 
 @{
     ViewData["Title"] = "Result of the search";
 }
-
-<h4>Result of the search:</h4>
-
 
 @if (Model.Length == 0)
 {
@@ -15,18 +12,32 @@
 }
 else
 {
-   <ul style=" list-style: none;">
-       @foreach (var book in Model)
-      {
-           
-          <li class = "img-thumbnail">
-              <a href="@Url.Action("Index","Book", new{id=book.Id})"> Title: @book.Title</a>
-              <img class = "img-thumbnail" src="@book.Image" alt="@book.Image"/>
-              <br/><br/>Description: @book.Description 
-              <br/><br/>Price: @book.Price $     
-          </li>           
-      }
-   </ul>   
+    <ul style=" list-style: none;"class="bg-dark">
+        @foreach (var book in Model)
+        {
+
+            <li class="img-thumbnail bg-dark text-light" style=" width: 33%; display:inline-block;">
+
+                <img class="img-thumbnail" src="@book.Image" alt="@book.Image" />
+
+                <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
+
+                <b>Author:</b> @book.Author
+                <br/> <br/>   @book.Brief
+
+                <br/><b>Status:</b>
+                @if (@book.Available)
+                {
+                    <span class="text-primary">Available</span>
+                }
+                else
+                {
+                    <span class="text-danger">Not Available</span>
+                }
+
+                 <br/><br/><span style="text-align:rigth;">Price: @book.Price.ToString("c")</span>
+            </li>
+        }
+    </ul>
 }
- 
- 
+

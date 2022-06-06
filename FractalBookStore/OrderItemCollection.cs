@@ -1,6 +1,5 @@
 ﻿using FractalBookStore.DTO;
 using FractalBookStore.DTOFactory;
-using FractalBookStore.Mappers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace FractalBookStore
             this.orderDto = orderDto ?? throw new ArgumentNullException(nameof(orderDto));
 
             items = orderDto.Items
-                            .Select(OrderItemMapper.Map)
+                            .Select(Mapper.Map)
                             .ToList();
         }
 
@@ -63,7 +62,7 @@ namespace FractalBookStore
             var orderItemDto = OrderItemDTOFactory.Create(orderDto, bookId, price, count);
             orderDto.Items.Add(orderItemDto);
 
-            OrderItem orderItem = OrderItemMapper.Map(orderItemDto);
+            OrderItem orderItem = Mapper.Map(orderItemDto);
             items.Add(orderItem);
 
             return orderItem;

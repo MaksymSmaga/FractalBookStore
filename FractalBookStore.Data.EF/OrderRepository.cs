@@ -1,5 +1,6 @@
-﻿using FractalBookStore.DTOFactory;
-using FractalBookStore.Mappers;
+﻿using FractalBookStore.DTO;
+using FractalBookStore.DTOFactory;
+
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -22,7 +23,7 @@ namespace FractalBookStore.Data.EF
             dbContext.Orders.Add(dto);
             dbContext.SaveChanges();
 
-            return OrderMapper.Map(dto);
+            return Mapper.Map(dto);
         }
 
         public Order GetById(int id)
@@ -33,7 +34,7 @@ namespace FractalBookStore.Data.EF
                                .Include(order => order.Items)
                                .Single(order => order.Id == id);
 
-            return OrderMapper.Map(dto);
+            return Mapper.Map(dto);
         }
 
         public void Update(Order order)

@@ -36,7 +36,7 @@ namespace FractalBookStore
             }
 
         }
-        public string ShortDescription
+        public string Brief
         {
             get => _dto.ShortDescription;
             set => _dto.ShortDescription = value;
@@ -51,11 +51,15 @@ namespace FractalBookStore
             get => _dto.Image;
             set => _dto.Image = value;
         }
-
         public bool Available
         {
             get => _dto.Availble;
             set => _dto.Availble = value;
+        }
+        public bool IsBestSell
+        {
+            get => _dto.IsBestSell;
+            set => _dto.IsBestSell = value;
         }
         public decimal Price
         {
