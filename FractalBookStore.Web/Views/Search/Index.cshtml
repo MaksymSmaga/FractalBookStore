@@ -18,7 +18,9 @@ else
 
             <li class="img-thumbnail bg-dark text-light" style=" width: 33%; display:inline-block;">
 
-                <img class="img-thumbnail" src="@book.Image" alt="@book.Image" />
+                
+              <img class="img-thumbnail" src="@book.Image" alt="@book.Title" />
+
 
                 <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
 
@@ -35,7 +37,7 @@ else
                     <span class="text-danger">Not Available</span>
                 }
 
-                 <br/><br/><span style="text-align:rigth;">Price: @book.Price.ToString("c")</span>
+                 <br/><br/><span style=" ">Price: @book.Price.ToString("c")</span>
             </li>
         }
     </ul>

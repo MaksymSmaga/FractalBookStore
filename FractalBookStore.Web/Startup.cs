@@ -86,13 +86,14 @@ namespace FractalBookStore.Web
             // To connect session.
             app.UseSession();
 
+            app.UseRouting();
             app.UseAuthorization();
 
 
             ///app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
            // app.UseStaticFiles();
-            app.UseRouting();
+        
             //app.UseMvcWithDefaultRoute();
             app.UseEndpoints(endpoints =>
             {
