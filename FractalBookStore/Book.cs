@@ -66,6 +66,23 @@ namespace FractalBookStore
             get => _dto.Price;
             set => _dto.Price = value;
         }
+        public decimal Discount
+        {
+            get => _dto.Discount;
+            set => _dto.Discount = value;
+        }
+
+        public decimal Shipping
+        {
+            get => _dto.Shipping;
+            set => _dto.Shipping = value;
+        }
+
+        public decimal TotalPrice
+        {
+            get => _dto.TotalPrice;
+            set => _dto.TotalPrice = _dto.Price * (100 - _dto.Discount / 100) + _dto.Shipping;
+        }
 
         public Book(BookDTO dto)
         {

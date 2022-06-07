@@ -44,6 +44,12 @@ namespace FractalBookStore.Data.EF
 
                 action.Property(dto => dto.Price)
                       .HasColumnType("money");
+                action.Property(dto => dto.Discount)
+                      .HasColumnType("money");
+                action.Property(dto => dto.Shipping)
+                      .HasColumnType("money");
+                action.Property(dto => dto.TotalPrice)
+                      .HasColumnType("money");
 
                 action.HasData(
                     new BookDTO
@@ -59,11 +65,13 @@ namespace FractalBookStore.Data.EF
                                      + "a natural landscape may include bushes, trees, rugged mountains, and clouds,"
                                      + "which are far too intricate to be represented by classical geometric shapes",
                         Image = "/images/FractalsAVeryShortIntroduction.jpg",
-                        
                         Availble = true,
                         IsBestSell = true,
                         Price = 13.19m,
-                    },
+                        Discount = 20.0m,
+                        Shipping = 0.0m,
+                        TotalPrice = 13.19m * ((100 - 20.0m) / 100) + 0.0m,
+                      },
                     new BookDTO
                     {
                         Id = 2,
@@ -78,6 +86,9 @@ namespace FractalBookStore.Data.EF
                         Availble = true,
                         IsBestSell = true,
                         Price = 19.13m,
+                        Discount = 13.0m,
+                        Shipping = 34.0m,
+                        TotalPrice = 13.19m * ((100 - 13.0m) / 100) + 34.0m,
                     },
                     new BookDTO
                     {
@@ -90,9 +101,12 @@ namespace FractalBookStore.Data.EF
                                     + "but of course it incorporates numerous pieces that have been around for a very long time. "
                                     + "Like everything in science, this new geometry has very, very deep and long roots.",
                         Image = "/images/TheColoursOfInfinity.jpg",
-                        Availble =false,
+                        Availble = false,
                         IsBestSell = true,
                         Price = 14.98m,
+                        Discount = 0.0m,
+                        Shipping = 23.0m,
+                        TotalPrice = 14.98m * ((100 - 13.0m) / 100) + 23.0m,
                     },
                     new BookDTO
                     {
@@ -115,6 +129,9 @@ namespace FractalBookStore.Data.EF
                         Availble = true,
                         IsBestSell = true,
                         Price = 13.92m,
+                        Discount = 20.0m,
+                        Shipping = 100.0m,
+                        TotalPrice = 13.92m * ((100 - 20.0m) / 100) + 100.0m,
                     },
                     new BookDTO
                     {
@@ -133,6 +150,9 @@ namespace FractalBookStore.Data.EF
                         Availble = true,
                         IsBestSell = false,
                         Price = 17.84m,
+                        Discount = 0.0m,
+                        Shipping = 1.23m,
+                        TotalPrice = 17.84m * ((100 - 0.0m) / 100) + 1.23m,
                     },
                     new BookDTO
                     {
@@ -151,6 +171,9 @@ namespace FractalBookStore.Data.EF
                         Availble = true,
                         IsBestSell = false,
                         Price = 9.99m,
+                        Discount = 0.0m,
+                        Shipping = 0.0m,
+                        TotalPrice = 9.99m * ((100 - 0.0m) / 100) + 0.0m,
                     },
 
                     new BookDTO
@@ -170,14 +193,17 @@ namespace FractalBookStore.Data.EF
                         "explore Julia Sets and the Mandelbrot Set.The last part of the book examines two " +
                         "- dimensional dynamical systems, strange attractors, cellular automata, " +
                         "and chaotic differential equations.",
-                        Image = "~/images/ChaosAndFractals.jpg",
+                        Image = "/images/ChaosAndFractals.jpg",
                         Availble = true,
                         IsBestSell = false,
                         Price = 42.28m,
+                        Discount = 50.0m,
+                        Shipping = 0.0m,
+                        TotalPrice = 42.28m * ((100 - 50.0m) / 100) + 0.0m,
                     },
                     new BookDTO
                     {
-                        Id =8,
+                        Id = 8,
                         Isbn = "ISBN0135555539",
                         Author = "Kenneth Falconer",
                         Title = "Fractal Geometry",
@@ -195,6 +221,9 @@ namespace FractalBookStore.Data.EF
                         Availble = true,
                         IsBestSell = false,
                         Price = 38.45m,
+                        Discount = 5.0m,
+                        Shipping = 0.0m,
+                        TotalPrice = 38.45m * ((100 - 5.0m) / 100) + 0.0m,
                     },
                     new BookDTO
                     {
@@ -217,6 +246,9 @@ namespace FractalBookStore.Data.EF
                         Availble = true,
                         IsBestSell = false,
                         Price = 79.32m,
+                        Discount = 33.0m,
+                        Shipping = 125.0m,
+                        TotalPrice = 79.32m * ((100 - 33.0m) / 100) + 125.0m,
                     }
                 );
             });

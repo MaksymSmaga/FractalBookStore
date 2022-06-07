@@ -92,8 +92,8 @@ namespace FractalBookStore.Web
 
             ///app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
-           // app.UseStaticFiles();
-        
+            app.UseStaticFiles();
+
             //app.UseMvcWithDefaultRoute();
             app.UseEndpoints(endpoints =>
             {

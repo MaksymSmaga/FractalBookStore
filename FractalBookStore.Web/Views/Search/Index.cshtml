@@ -12,22 +12,25 @@
 }
 else
 {
-    <ul style=" list-style: none;"class="bg-dark">
+   
         @foreach (var book in Model)
-        {
+        { 
+            <div class="img-thumbnail bg-dark text-light" style=" width: 33%; height:550px; display: inline-block; padding: 20px; ">
 
-            <li class="img-thumbnail bg-dark text-light" style=" width: 33%; display:inline-block;">
+                <center>
 
-                
-              <img class="img-thumbnail" src="@book.Image" alt="@book.Title" />
+                     <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
 
+                     <a href="@Url.Action("Index","Book", new{id=book.Id})">
+                     <img class="img-thumbnail" src="@book.Image" width="200" height="400"alt="@book.Title" /> 
+                     </a>
 
-                <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
+                 </center>
 
                 <b>Author:</b> @book.Author
-                <br/> <br/>   @book.Brief
+                <br/>    @book.Brief
 
-                <br/><b>Status:</b>
+                <br/> Status: 
                 @if (@book.Available)
                 {
                     <span class="text-primary">Available</span>
@@ -37,9 +40,28 @@ else
                     <span class="text-danger">Not Available</span>
                 }
 
-                 <br/><br/><span style=" ">Price: @book.Price.ToString("c")</span>
-            </li>
+                <br/> Shipping: 
+                @if (@book.Shipping > 0)
+                {
+                    <span class="text-primary">@book.Shipping.ToString("C")</span>
+                }
+                else
+                {
+                    <span class="text-danger">Free</span>
+                }
+                <br/><span style=" ">Price: @book.Price.ToString("C") </span>
+                <br/> Discount:  
+                @if (@book.Discount > 0.0m)
+                {
+                    <span style=" "> @book.Discount.ToString("G4")%</span>
+                }
+                else
+                {
+                    <span class="text-primary">None</span>
+                }
+                <br/><span style="text-align:right "><b>Total Price: @book.TotalPrice.ToString("C")</b></span>
+            </div>
         }
-    </ul>
+     
 }
 
