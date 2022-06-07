@@ -12,10 +12,11 @@
 }
 else
 {
+                     
    
         @foreach (var book in Model)
         { 
-            <div class="img-thumbnail bg-dark text-light" style=" width: 33%; height:550px; display: inline-block; padding: 20px; ">
+            <div class="img-thumbnail bg-dark text-light" style="float: left; ">
 
                 <center>
 
@@ -30,6 +31,7 @@ else
                 <b>Author:</b> @book.Author
                 <br/>    @book.Brief
 
+
                 <br/> Status: 
                 @if (@book.Available)
                 {
@@ -40,16 +42,24 @@ else
                     <span class="text-danger">Not Available</span>
                 }
 
-                <br/> Shipping: 
+
+              
+                <br/><span class="text-left">Price: @book.Price.ToString("C") </span>
+                 Shipping: 
                 @if (@book.Shipping > 0)
                 {
-                    <span class="text-primary">@book.Shipping.ToString("C")</span>
+                    <span class="text-primary text-right" >@book.Shipping.ToString("C")</span>
                 }
                 else
                 {
-                    <span class="text-danger">Free</span>
+                    <span class="text-danger text-right" >Free</span>
                 }
-                <br/><span style=" ">Price: @book.Price.ToString("C") </span>
+
+                
+            
+
+
+
                 <br/> Discount:  
                 @if (@book.Discount > 0.0m)
                 {
@@ -59,7 +69,7 @@ else
                 {
                     <span class="text-primary">None</span>
                 }
-                <br/><span style="text-align:right "><b>Total Price: @book.TotalPrice.ToString("C")</b></span>
+                <span style="text-align:right "><b>Total Price: @book.TotalPrice.ToString("C")</b></span>
             </div>
         }
      

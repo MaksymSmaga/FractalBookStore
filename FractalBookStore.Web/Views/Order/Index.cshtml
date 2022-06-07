@@ -4,9 +4,9 @@
     ViewData["Title"] = "Cart";
 }
 
-<h1>Cart</h1>
+<h3 class="text-light">Your order:</h3>
 
-<table class="table" table-sm table-striped">
+<table class="table text-light"  >
     <thead class="thead-dark">
 
         <tr>
@@ -49,9 +49,10 @@
 
 </table>
 
-                       
+     
+<h3 class="text-light">Send it:</h3>                  
     <form method = "post"  action = "SendEmail" > 
-        <div class = "container" > 
+        <div class = "container text-light" > 
                <span class = "form-control-static" > Receiver: </span> 
                <input class = "form-control" type = "text" name = "receiver" /> 
             <br/> 
