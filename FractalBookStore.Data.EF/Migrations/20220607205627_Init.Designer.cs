@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FractalBookStore.Data.EF.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    [Migration("20220607004349_Initial")]
-    partial class Initial
+    [Migration("20220607205627_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -20,25 +20,6 @@ namespace FractalBookStore
             Items = new OrderItemCollection(dto);
         }
 
-        //public void AddOrUpdateItem(Book book, int count)
-        //{
-        //    if (book == null)
-        //        throw new ArgumentNullException(nameof(book));
-
-        //    var item = Items.FindIndex(x => x.BookId == book.Id);
-
-        //    if (item == null)
-        //    {
-        //        Items.Add(book.Id, book.Price, count);
-        //    }
-        //    else
-        //    {
-        //        Items.Remove(item.BookId);
-
-        //        Items.Add(book.Id, book.Price, count);
-                
-        //    }
-        //}
         public void AddOrUpdateItem(Book book, int count)
         {
             if (book == null)

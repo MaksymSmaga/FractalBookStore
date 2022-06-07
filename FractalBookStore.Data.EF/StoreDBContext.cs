@@ -1,6 +1,7 @@
 ﻿using FractalBookStore.DataTransferObjects;
 using FractalBookStore.DTO;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace FractalBookStore.Data.EF
 {   // Add-Migration InitialCreate -Project FractalBookStore.Data.EF -StartupProject FractalBookStore.Web
@@ -27,6 +28,7 @@ namespace FractalBookStore.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             BuidBooks(modelBuilder);
+      
             BuidOrderItems(modelBuilder);
             BuildOrders(modelBuilder);
         }
@@ -71,7 +73,8 @@ namespace FractalBookStore.Data.EF
                         Discount = 20.0m,
                         Shipping = 0.0m,
                         TotalPrice = 13.19m * ((100 - 20.0m) / 100) + 0.0m,
-                      },
+                  
+                    },
                     new BookDTO
                     {
                         Id = 2,
@@ -89,6 +92,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 13.0m,
                         Shipping = 34.0m,
                         TotalPrice = 13.19m * ((100 - 13.0m) / 100) + 34.0m,
+                
                     },
                     new BookDTO
                     {
@@ -107,6 +111,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 0.0m,
                         Shipping = 23.0m,
                         TotalPrice = 14.98m * ((100 - 13.0m) / 100) + 23.0m,
+                
                     },
                     new BookDTO
                     {
@@ -132,6 +137,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 20.0m,
                         Shipping = 100.0m,
                         TotalPrice = 13.92m * ((100 - 20.0m) / 100) + 100.0m,
+             
                     },
                     new BookDTO
                     {
@@ -153,6 +159,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 0.0m,
                         Shipping = 1.23m,
                         TotalPrice = 17.84m * ((100 - 0.0m) / 100) + 1.23m,
+                 
                     },
                     new BookDTO
                     {
@@ -174,6 +181,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 0.0m,
                         Shipping = 0.0m,
                         TotalPrice = 9.99m * ((100 - 0.0m) / 100) + 0.0m,
+           
                     },
 
                     new BookDTO
@@ -200,6 +208,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 50.0m,
                         Shipping = 0.0m,
                         TotalPrice = 42.28m * ((100 - 50.0m) / 100) + 0.0m,
+             
                     },
                     new BookDTO
                     {
@@ -224,6 +233,7 @@ namespace FractalBookStore.Data.EF
                         Discount = 5.0m,
                         Shipping = 0.0m,
                         TotalPrice = 38.45m * ((100 - 5.0m) / 100) + 0.0m,
+           
                     },
                     new BookDTO
                     {
@@ -249,11 +259,12 @@ namespace FractalBookStore.Data.EF
                         Discount = 33.0m,
                         Shipping = 125.0m,
                         TotalPrice = 79.32m * ((100 - 33.0m) / 100) + 125.0m,
+                
                     }
                 );
             });
         }
-
+         
         public static void BuidOrderItems(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrderItemDTO>(action =>

@@ -9,7 +9,7 @@
         public string ShortDescription { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public bool Availble{ get; set; }
+        public bool Availble { get; set; }
         public bool IsBestSell { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
