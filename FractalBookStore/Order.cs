@@ -12,7 +12,7 @@ namespace FractalBookStore
         public int Id => dto.Id;
         public int TotalCount => Items.Sum(item => item.Count);
         public decimal TotalPrice => Items.Sum(item => item.Price * item.Count);
-        public OrderItemCollection Items { get; }
+        public OrderItemCollection Items { get;}
 
         public Order(OrderDTO dto)
         {
@@ -20,23 +20,39 @@ namespace FractalBookStore
             Items = new OrderItemCollection(dto);
         }
 
+        //public void AddOrUpdateItem(Book book, int count)
+        //{
+        //    if (book == null)
+        //        throw new ArgumentNullException(nameof(book));
+
+        //    var item = Items.FindIndex(x => x.BookId == book.Id);
+
+        //    if (item == null)
+        //    {
+        //        Items.Add(book.Id, book.Price, count);
+        //    }
+        //    else
+        //    {
+        //        Items.Remove(item.BookId);
+
+        //        Items.Add(book.Id, book.Price, count);
+                
+        //    }
+        //}
         public void AddOrUpdateItem(Book book, int count)
         {
             if (book == null)
                 throw new ArgumentNullException(nameof(book));
 
-            var item = Items.SingleOrDefault(x => x.BookId == book.Id);
+            var index = Items.ToList().FindIndex(x => x.BookId == book.Id);
 
-            if (item == null)
+            if (index == -1)
             {
                 Items.Add(book.Id, book.Price, count);
             }
             else
             {
-                Items.Remove(item.BookId);
-
-                Items.Add(book.Id, book.Price, count);
-                
+                Items.ToArray()[index].Count += count;
             }
         }
 
