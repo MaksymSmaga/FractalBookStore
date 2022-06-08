@@ -13,5 +13,11 @@ namespace FractalBookStore
 
         Task<Book> GetByIdAsync(int id);
         Task<Book[]> GetAllByIdsAsync(IEnumerable<int> bookIds);
+
+        Task<Book> GetCheapest();
+        Task<Book> GetNewest();
+        Task<Book> GetDiscountest();
+        Task<Book> GetRandomRecommended();
+
     }
 }

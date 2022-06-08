@@ -74,5 +74,33 @@ namespace FractalBookStore.Data.EF
             return Mapper.Map(dto);
         }
 
+
+        public async Task<Decimal> GetDiscountest()
+        {
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var minDiscount = await dbContext.Books.MinAsync(b => b.Discount);
+            return minDiscount;
+        }
+
+        public Task<Book> GetNewest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Book> GetRandomRecommended()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Book> GetCheapest()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Book> IBookRepository.GetDiscountest()
+        {
+            throw new NotImplementedException();
+        }
     }    
 }

@@ -1,6 +1,7 @@
 ﻿using FractalBookStore.DataTransferObjects;
 using FractalBookStore.DTO;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 
 namespace FractalBookStore.Data.EF
@@ -69,6 +70,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/FractalsAVeryShortIntroduction.jpg",
                         Availble = true,
                         IsBestSell = true,
+                        PublishedDate = new DateTime(2001, 12, 13),
                         Price = 13.19m,
                         Discount = 20.0m,
                         Shipping = 0.0m,
@@ -88,6 +90,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/FractalGeometry.jpg",
                         Availble = true,
                         IsBestSell = true,
+                        PublishedDate = new DateTime(2013, 11, 08),
                         Price = 19.13m,
                         Discount = 13.0m,
                         Shipping = 34.0m,
@@ -107,6 +110,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/TheColoursOfInfinity.jpg",
                         Availble = false,
                         IsBestSell = true,
+                        PublishedDate = new DateTime(2021, 01, 03),
                         Price = 14.98m,
                         Discount = 0.0m,
                         Shipping = 23.0m,
@@ -133,6 +137,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/MathArt.jpg",
                         Availble = true,
                         IsBestSell = true,
+                        PublishedDate = new DateTime(2016, 11,24),
                         Price = 13.92m,
                         Discount = 20.0m,
                         Shipping = 100.0m,
@@ -155,6 +160,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/MathColoringBookFractals.jpg",
                         Availble = true,
                         IsBestSell = false,
+                        PublishedDate = new DateTime(2018, 12, 21),
                         Price = 17.84m,
                         Discount = 0.0m,
                         Shipping = 1.23m,
@@ -177,6 +183,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/FractalsTheSecretCodeOfCreation.jpg",
                         Availble = true,
                         IsBestSell = false,
+                        PublishedDate = new DateTime(2020, 05, 01),
                         Price = 9.99m,
                         Discount = 0.0m,
                         Shipping = 0.0m,
@@ -204,6 +211,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/ChaosAndFractals.jpg",
                         Availble = true,
                         IsBestSell = false,
+                        PublishedDate = new DateTime(2019, 10, 11),
                         Price = 42.28m,
                         Discount = 50.0m,
                         Shipping = 0.0m,
@@ -229,6 +237,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/FractalGeometry.jpg",
                         Availble = true,
                         IsBestSell = false,
+                        PublishedDate = new DateTime(2022, 02, 24),
                         Price = 38.45m,
                         Discount = 5.0m,
                         Shipping = 0.0m,
@@ -255,6 +264,7 @@ namespace FractalBookStore.Data.EF
                         Image = "/images/BeautyOfFractalsBook.jpg",
                         Availble = true,
                         IsBestSell = false,
+                        PublishedDate = new DateTime(1986, 06, 08),
                         Price = 79.32m,
                         Discount = 33.0m,
                         Shipping = 125.0m,

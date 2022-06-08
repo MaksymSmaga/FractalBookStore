@@ -61,6 +61,12 @@ namespace FractalBookStore
             get => _dto.IsBestSell;
             set => _dto.IsBestSell = value;
         }
+        public DateTime PublishedDate
+        {
+            get => _dto.PublishedDate;
+            set => _dto.PublishedDate = value;
+        }
+
         public decimal Price
         {
             get => _dto.Price;
@@ -71,13 +77,11 @@ namespace FractalBookStore
             get => _dto.Discount;
             set => _dto.Discount = value;
         }
-
         public decimal Shipping
         {
             get => _dto.Shipping;
             set => _dto.Shipping = value;
         }
-
         public decimal TotalPrice
         {
             get => _dto.TotalPrice;

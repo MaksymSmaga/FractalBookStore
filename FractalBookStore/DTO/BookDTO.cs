@@ -1,4 +1,6 @@
-﻿namespace FractalBookStore.DataTransferObjects
+﻿using System;
+
+namespace FractalBookStore.DataTransferObjects
 {
     public class BookDTO
     {
@@ -11,6 +13,7 @@
         public string Image { get; set; }
         public bool Availble { get; set; }
         public bool IsBestSell { get; set; }
+        public DateTime PublishedDate { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public decimal Shipping { get; set; }
