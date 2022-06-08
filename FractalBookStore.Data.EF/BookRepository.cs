@@ -75,32 +75,50 @@ namespace FractalBookStore.Data.EF
         }
 
 
-        public async Task<Decimal> GetDiscountest()
+        public async Task<Decimal> GetLowPrice()
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
 
-            var minDiscount = await dbContext.Books.MinAsync(b => b.Discount);
-            return minDiscount;
+            return await dbContext.Books.MinAsync(book => book.Price);
         }
 
-        public Task<Book> GetNewest()
+        public async Task<Decimal> GetHighPrice()
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            return await dbContext.Books.MaxAsync(book => book.Price);
         }
 
-        public Task<Book> GetRandomRecommended()
+        public async Task<Book> GetNewest()
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+            var orderedBooks = dbContext.Books.OrderBy(book => book.PublishedDate);
+            var dto = await orderedBooks.FirstAsync();
+            return Mapper.Map(dto);
         }
 
-        public Task<Book> GetCheapest()
+        public async Task<Book> GetRandomRecommended()
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+            var rnd = new Random();
+            
+            return await GetByIdAsync(rnd.Next(1, dbContext.Books.Count()));
         }
 
-        Task<Book> IBookRepository.GetDiscountest()
+        public async Task<Book> GetCheapest()
         {
-            throw new NotImplementedException();
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+            var orderedBooks = dbContext.Books.OrderBy(book => book.Price);
+            var dto = await orderedBooks.FirstAsync();
+            return Mapper.Map(dto);
+        }
+
+        public async Task<Book> GetDiscountest()
+        {
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+            var orderedBooks = dbContext.Books.OrderBy(book => book.Discount);
+            var dto = await orderedBooks.FirstAsync();
+            return Mapper.Map(dto);
         }
     }    
 }

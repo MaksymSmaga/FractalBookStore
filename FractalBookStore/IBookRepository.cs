@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FractalBookStore
@@ -12,12 +13,19 @@ namespace FractalBookStore
         Task<Book[]> GetAllByTitleOrAuthorAsync(string titleOrAuthor);
 
         Task<Book> GetByIdAsync(int id);
+
         Task<Book[]> GetAllByIdsAsync(IEnumerable<int> bookIds);
 
-        Task<Book> GetCheapest();
+        Task<Decimal> GetLowPrice();
+
+        Task<Decimal> GetHighPrice();
+
         Task<Book> GetNewest();
-        Task<Book> GetDiscountest();
+
         Task<Book> GetRandomRecommended();
 
+        Task<Book> GetCheapest();
+
+        Task<Book> GetDiscountest();
     }
 }

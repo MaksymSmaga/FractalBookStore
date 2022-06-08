@@ -66,7 +66,6 @@ namespace FractalBookStore
             get => _dto.PublishedDate;
             set => _dto.PublishedDate = value;
         }
-
         public decimal Price
         {
             get => _dto.Price;
