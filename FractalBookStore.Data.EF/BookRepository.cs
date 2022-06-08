@@ -74,7 +74,6 @@ namespace FractalBookStore.Data.EF
             return Mapper.Map(dto);
         }
 
-
         public async Task<Decimal> GetLowPrice()
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
