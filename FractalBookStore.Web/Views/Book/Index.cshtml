@@ -5,51 +5,57 @@
     ViewData["Title"] = Model.Title;
 }
 <br />
-<img  src="@Model.Image" width="400" align="right" alt="Book Photo">
+<img src="@Model.Image" width="400" align="right" alt="Book Photo">
 
 <div class="text-light">
 
-<h4>@Model.Title</h4>
-<p><strong>Author:</strong>  @Model.Author</p>
+    <h4>@Model.Title</h4>
 
-<br /><p><strong>Description:</strong>  @Model.Description</p>
-<p><strong>Price: @Model.Price.ToString("C")</strong></p>
+    <p><strong>Author:</strong>  @Model.Author</p>
+
+    <br /><p><strong>Description:</strong>  @Model.Description</p>
+
+    <p>Price: @Model.Price.ToString("C")</p>
+
+    <p>Published: @Model.PublishedDate.ToShortDateString()</p>
+
+    Status:
+    @if (@Model.Available)
+    {
+        <span class="text-primary">Available</span>
+    }
+    else
+    {
+        <span class="text-danger">Not Available</span>
+    }
+
+    <br/>Shipping:
+    @if (@Model.Shipping > 0)
+    {
+        <span class="text-primary text-right">@Model.Shipping.ToString("C")</span>
+    }
+    else
+    {
+        <span class="text-danger text-right">Free</span>
+    }
 
  
- Status:
-@if (@Model.Available)
-{
-    <p>Available</p>
-}
-else
-{
-    <p>Not Available</p>
-}
- 
-<p>Price: @Model.Price.ToString("C") </p>
-                 Shipping:
-@if (@Model.Shipping > 0)
-{
-    <p>@Model.Shipping.ToString("C")</p>
-}
-else
-{
-    <p>Free</p>
-}
+    <br/> Discount:
+    @if (@Model.Discount > 0.0m)
+    {
+        <span style=" "> @Model.Discount.ToString("G4")%</span>
+    }
+    else
+    {
+        <span class="text-primary">None</span>
+    }
+    <br/><br/><span style="text-align:right "><b>Total Price: @Model.TotalPrice.ToString("C")</b></span>
+    <br/><br/>  
+</div>
 
- 
- Discount:
-@if (@Model.Discount > 0.0m)
-{
-    <p> @Model.Discount.ToString("G4")%</p>
-}
-else
-{
-    <p>None</p>
-}
-<p><b>Total Price: @Model.TotalPrice.ToString("C")</b></p>
 
- </div>
+
+
 <form action="@Url.Action("AddItem","Order")" method="post">
     <input type="hidden" name="bookid" value="@Model.Id" />
     <input type="hidden" name="count" value="1" />

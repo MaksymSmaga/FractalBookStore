@@ -12,66 +12,56 @@
 }
 else
 {
-                     
-   
-        @foreach (var book in Model)
-        { 
-            <div class="img-thumbnail bg-dark text-light" style="float: left; ">
+    @foreach (var book in Model)
+    {
+        <div class="img-thumbnail bg-dark text-light" style="float: left; width:33%; ">
 
-                <center>
+            <center>
+                <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
 
-                     <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
+                <a href="@Url.Action("Index","Book", new{id=book.Id})">
+                    <img class="img-thumbnail" src="@book.Image" width="200" height="400" alt="@book.Title" />
+                </a>
+            </center>
 
-                     <a href="@Url.Action("Index","Book", new{id=book.Id})">
-                     <img class="img-thumbnail" src="@book.Image" width="200" height="400"alt="@book.Title" /> 
-                     </a>
+            <b>Author:</b> @book.Author
 
-                 </center>
+            <br />    @book.Brief
 
-                <b>Author:</b> @book.Author
-                <br/>    @book.Brief
+            <br /> Status:
+            @if (@book.Available)
+            {
+                <span class="text-primary">Available</span>
+            }
+            else
+            {
+                <span class="text-danger">Not Available</span>
+            }
 
+            <br /><span class="text-left">Price: @book.Price.ToString("C") </span>
 
-                <br/> Status: 
-                @if (@book.Available)
-                {
-                    <span class="text-primary">Available</span>
-                }
-                else
-                {
-                    <span class="text-danger">Not Available</span>
-                }
+            Shipping:
+            @if (@book.Shipping > 0)
+            {
+                <span class="text-primary text-right">@book.Shipping.ToString("C")</span>
+            }
+            else
+            {
+                <span class="text-danger text-right">Free</span>
+            }
 
+            <br /> Discount:
+            @if (@book.Discount > 0.0m)
+            {
+                <span style=" "> @book.Discount.ToString("G4")%</span>
+            }
+            else
+            {
+                <span class="text-primary">None</span>
+            }
 
-              
-                <br/><span class="text-left">Price: @book.Price.ToString("C") </span>
-                 Shipping: 
-                @if (@book.Shipping > 0)
-                {
-                    <span class="text-primary text-right" >@book.Shipping.ToString("C")</span>
-                }
-                else
-                {
-                    <span class="text-danger text-right" >Free</span>
-                }
-
-                
-            
-
-
-
-                <br/> Discount:  
-                @if (@book.Discount > 0.0m)
-                {
-                    <span style=" "> @book.Discount.ToString("G4")%</span>
-                }
-                else
-                {
-                    <span class="text-primary">None</span>
-                }
-                <span style="text-align:right "><b>Total Price: @book.TotalPrice.ToString("C")</b></span>
-            </div>
-        }
-     
+            <span style="text-align:right "><b>Total Price: @book.TotalPrice.ToString("C")</b></span>
+        </div>
+    }
 }
 
