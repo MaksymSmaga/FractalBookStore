@@ -1,22 +1,37 @@
-﻿using FractalBookStore.Web.Models;
+﻿using FractalBookStore.Domain.Services;
+using FractalBookStore.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace FractalBookStore.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+
+
+
+        // To get data repository for working on it.
+        private readonly BookService _bookService;
+
+        // Injection via constructor.
+        public HomeController(BookService bookService)
         {
-            _logger = logger;
+            _bookService = bookService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string query = "")
         {
-            return View();
+            var books = await _bookService.GetAllByQueryAsync(query);
+            return View(books);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

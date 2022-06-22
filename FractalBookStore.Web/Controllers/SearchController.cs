@@ -15,12 +15,18 @@ namespace FractalBookStore.Web.Controllers
         {
             _bookService = bookService;
         }
+ 
 
         public async Task<IActionResult> Index(string query)
         {
-            var books = await _bookService.GetAllByQueryAsync(query);
-
-            return View(books);
+          var books = await _bookService.GetAllByQueryAsync(query);
+          return View(books);
         }
     }
 }
+
+    
+         
+
+     
+ 

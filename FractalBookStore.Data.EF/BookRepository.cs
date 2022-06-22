@@ -34,18 +34,6 @@ namespace FractalBookStore.Data.EF
             return new Book[0];
         }
 
-        public async Task<Book[]> GetAllByIdsAsync(IEnumerable<int> bookIds)
-        {
-            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
-
-            var dtos = await dbContext.Books
-                            .Where(book => bookIds.Contains(book.Id))
-                            .ToArrayAsync();
-
-            return dtos.Select(Mapper.Map)
-                           .ToArray();
-        }
-
         public async Task<Book[]> GetAllByTitleOrAuthorAsync(string titleOrAuthor)
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
@@ -63,6 +51,20 @@ namespace FractalBookStore.Data.EF
 
             return dtos.Select(Mapper.Map)
                          .ToArray();
+        }
+
+
+
+        public async Task<Book[]> GetAllByIdsAsync(IEnumerable<int> bookIds)
+        {
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var dtos = await dbContext.Books
+                            .Where(book => bookIds.Contains(book.Id))
+                            .ToArrayAsync();
+
+            return dtos.Select(Mapper.Map)
+                           .ToArray();
         }
 
         public async Task<Book> GetByIdAsync(int id)

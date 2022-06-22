@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FractalBookStore
@@ -8,6 +9,7 @@ namespace FractalBookStore
     // of inheritanced and implemented BookRepositories.
     public interface IBookRepository
     {
+
         Task<Book[]> GetAllByIsbnAsync(string titlePart);
 
         Task<Book[]> GetAllByTitleOrAuthorAsync(string titleOrAuthor);

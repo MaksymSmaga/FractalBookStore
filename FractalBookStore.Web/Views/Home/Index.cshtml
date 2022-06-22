@@ -1,5 +1,71 @@
-﻿@{
+﻿@using FractalBookStore;
+
+@model Book[]
+
+@{
     ViewData["Title"] = "Store of Fractal Books";
 }
+
+@if (Model.Length == 0)
+{
+    <p>Nothing is searched.</p>
+}
+else
+{
+    @foreach (var book in Model)
+    {
+        <div class="img-thumbnail bg-dark text-light" style="float: left; width:100%;">
+
+            <center>
+                <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
+
+                <a href="@Url.Action("Index","Book", new{id=book.Id})">
+                    <img class="img-thumbnail m-2 mr-3" src="@book.Image" width="200" height="400" style="float: left;" alt="@book.Title" />
+                </a>
+            </center>
+
+            <b>Author:</b> @book.Author
+
+            <br />  <br />  @book.Description
+
+            <br /><br /><span class="text-left">Price: @book.Price.ToString("C") </span>&nbsp;&nbsp;&nbsp;
+
+            Status:
+            @if (@book.Available)
+            {
+                <span class="text-primary">Available</span>
+            }
+            else
+            {
+                <span class="text-danger">Not Available</span>
+            } &nbsp;&nbsp;&nbsp;
+ 
+
+            Shipping:
+            @if (@book.Shipping > 0)
+            {
+                <span class="text-primary text-right">@book.Shipping.ToString("C")</span>
+            }
+            else
+            {
+                <span class="text-danger text-right">Free</span>
+            }&nbsp;&nbsp;&nbsp;
+
+            Discount:
+            @if (@book.Discount > 0.0m)
+            {
+                <span style=" "> @book.Discount.ToString("G4")%</span>
+            }
+            else
+            {
+                <span class="text-primary">None</span>
+            }&nbsp;&nbsp;&nbsp;
+
+              <span style="text-align:right "><b>Total Price: @book.TotalPrice.ToString("C")</b></span>
+        </div>
+    }
+}
+
+
 
 

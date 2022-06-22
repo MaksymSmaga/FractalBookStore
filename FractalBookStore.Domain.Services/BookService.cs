@@ -15,7 +15,10 @@ namespace FractalBookStore.Domain.Services
 
         public async Task<Book[]> GetAllByQueryAsync(string query)
         {
-            if(BookDTOFactory.IsIsbn(query))
+  
+
+
+            if (BookDTOFactory.IsIsbn(query))
                 return await _bookRepository.GetAllByIsbnAsync(query);
             return await _bookRepository.GetAllByTitleOrAuthorAsync(query);
         }
