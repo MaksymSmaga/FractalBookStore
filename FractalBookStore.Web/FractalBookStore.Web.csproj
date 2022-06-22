@@ -19,6 +19,9 @@
     <ProjectReference Include="..\FractalBookStore.Data.EF\FractalBookStore.Data.EF.csproj" />
     <ProjectReference Include="..\FractalBookStore.Domain.Services\FractalBookStore.Domain.Services.csproj" />
 	 
+	  
+	  
+	  
     <ProjectReference Include="..\FractalBookStore\FractalBookStore.csproj" />
   </ItemGroup>
 
