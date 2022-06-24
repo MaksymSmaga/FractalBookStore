@@ -16,13 +16,13 @@ else
     {
         <div class="img-thumbnail bg-dark text-light" style="float: left; width:100%;">
 
-            <center>
+             
                 <a href="@Url.Action("Index","Book", new{id=book.Id})"><h5>@book.Title</h5></a>
 
                 <a href="@Url.Action("Index","Book", new{id=book.Id})">
-                    <img class="img-thumbnail m-2 mr-3" src="@book.Image" width="200" height="400" style="float: left;" alt="@book.Title" />
+                    <img class="img-thumbnail m-2 mr-3" src="@book.Image" width="100" height="200" style="float: left;" alt="@book.Title" />
                 </a>
-            </center>
+           
 
             <b>Author:</b> @book.Author
 

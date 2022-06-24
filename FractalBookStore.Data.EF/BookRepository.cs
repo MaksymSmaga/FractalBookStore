@@ -13,6 +13,17 @@ namespace FractalBookStore.Data.EF
     {
         private readonly DbContextFactory _dBContextFactory;
 
+        public IQueryable<Book> Books { get { return GetBooks(); } }
+
+        IQueryable<Book> GetBooks()
+        {
+            var dbContext = _dBContextFactory.Create(typeof(BookRepository));
+
+            var dtos = dbContext.Books.ToArray();
+
+            return dtos.Select(Mapper.Map).ToArray().AsQueryable();
+        }
+
         public BookRepository(DbContextFactory dBContextFactory)
         {
             _dBContextFactory = dBContextFactory;
@@ -52,7 +63,6 @@ namespace FractalBookStore.Data.EF
             return dtos.Select(Mapper.Map)
                          .ToArray();
         }
-
 
 
         public async Task<Book[]> GetAllByIdsAsync(IEnumerable<int> bookIds)
@@ -102,7 +112,7 @@ namespace FractalBookStore.Data.EF
         {
             var dbContext = _dBContextFactory.Create(typeof(BookRepository));
             var rnd = new Random();
-            
+
             return await GetByIdAsync(rnd.Next(1, dbContext.Books.Count()));
         }
 
@@ -121,5 +131,5 @@ namespace FractalBookStore.Data.EF
             var dto = await orderedBooks.FirstAsync();
             return Mapper.Map(dto);
         }
-    }    
+    }
 }

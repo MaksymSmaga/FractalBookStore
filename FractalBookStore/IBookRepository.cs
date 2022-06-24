@@ -9,6 +9,7 @@ namespace FractalBookStore
     // of inheritanced and implemented BookRepositories.
     public interface IBookRepository
     {
+        IQueryable<Book>  Books { get; }
 
         Task<Book[]> GetAllByIsbnAsync(string titlePart);
 

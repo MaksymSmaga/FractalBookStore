@@ -1,5 +1,6 @@
 ﻿using FractalBookStore.Domain.Services;
 using FractalBookStore.Web.Models;
+using FractalBookStore.Web.Models.Pages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
@@ -30,7 +31,9 @@ namespace FractalBookStore.Web.Controllers
 
         public async Task<IActionResult> Index(string query = "")
         {
+ 
             var books = await _bookService.GetAllByQueryAsync(query);
+
             return View(books);
         }
 
