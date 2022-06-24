@@ -1,8 +1,6 @@
 ﻿using FractalBookStore.Domain.Services;
 using FractalBookStore.Web.Models;
-using FractalBookStore.Web.Models.Pages;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
